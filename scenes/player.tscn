@@ -1,21 +1,277 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=18 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
-[ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_jlx7c"]
-[ext_resource type="Texture2D" uid="uid://cvqgin85i6w2y" path="res://assets/sprites/lightorb.png" id="4_scbty"]
+[ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
 [ext_resource type="Texture2D" uid="uid://bpwl1mm64cb6m" path="res://assets/sprites/light.png" id="5_orvaw"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_xg41q"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_imdis"]
 diffuse_texture = ExtResource("1_nkhem")
-normal_texture = ExtResource("3_jlx7c")
+normal_texture = ExtResource("3_0jblh")
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw54f"]
-radius = 8.0
-height = 20.0
+[sub_resource type="Animation" id="Animation_4o4w1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_bg7ka"]
+resource_name = "down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.86264e-07, 23)]
+}
+
+[sub_resource type="Animation" id="Animation_phrai"]
+resource_name = "down_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_k7xe5"]
+resource_name = "down_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 20)]
+}
+
+[sub_resource type="Animation" id="Animation_uqnkt"]
+resource_name = "left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_hqlsr"]
+resource_name = "right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_vpe64"]
+resource_name = "top"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_ce5ul"]
+resource_name = "top_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-9, 9)]
+}
+
+[sub_resource type="Animation" id="Animation_weibb"]
+resource_name = "top_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [21]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9, 9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k1qkn"]
+_data = {
+"RESET": SubResource("Animation_4o4w1"),
+"down": SubResource("Animation_bg7ka"),
+"down_left": SubResource("Animation_phrai"),
+"down_right": SubResource("Animation_k7xe5"),
+"left": SubResource("Animation_uqnkt"),
+"right": SubResource("Animation_hqlsr"),
+"top": SubResource("Animation_vpe64"),
+"top_left": SubResource("Animation_ce5ul"),
+"top_right": SubResource("Animation_weibb")
+}
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hiksw"]
-polygon = PackedVector2Array(7, 17, 3, 20, -1, 17, 3, 14)
+cull_mode = 1
+polygon = PackedVector2Array(9.46679, 17.6976, 3.78672, 21.2371, -3.78672, 21.2371, -9.46679, 17.6976, -9.46679, 15.9278, -3.78672, 12.3883, 3.78672, 12.3883, 9.46679, 15.9278)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw54f"]
+radius = 4.0
+height = 16.0
 
 [node name="player" type="CharacterBody2D"]
 z_index = 1
@@ -24,41 +280,58 @@ position = Vector2(0, -11)
 script = ExtResource("1_kboq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = SubResource("CanvasTexture_xg41q")
-offset = Vector2(0, 8)
+position = Vector2(0, -12)
+texture = SubResource("CanvasTexture_imdis")
+offset = Vector2(0, 12)
+hframes = 4
+vframes = 8
+region_rect = Rect2(0, 0, 64, 64)
 
-[node name="Light" type="Sprite2D" parent="."]
-position = Vector2(10, -2)
-texture = ExtResource("4_scbty")
-offset = Vector2(-1, 14)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k1qkn")
+}
+autoplay = "down"
 
-[node name="Node2D" type="Node2D" parent="Light"]
-position = Vector2(-1, 22)
-metadata/_edit_group_ = true
-
-[node name="ObjectLight" type="PointLight2D" parent="Light/Node2D"]
-z_index = 1
-scale = Vector2(2, 1)
-color = Color(0.658824, 1, 1, 1)
-texture = ExtResource("5_orvaw")
-texture_scale = 0.2
-
-[node name="ShadowLight" type="PointLight2D" parent="Light/Node2D"]
-z_index = 1
-y_sort_enabled = true
-scale = Vector2(2, 1)
-color = Color(0.658824, 1, 1, 1)
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = ExtResource("5_orvaw")
-texture_scale = 0.2
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+show_behind_parent = true
+position = Vector2(0, -3)
+scale = Vector2(1.05632, 1.1301)
+occluder = SubResource("OccluderPolygon2D_hiksw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_xw54f")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-position = Vector2(1, 0)
-occluder = SubResource("OccluderPolygon2D_hiksw")
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 23)
+rotation = -0.0698132
+metadata/_edit_group_ = true
+
+[node name="ObjectLight" type="PointLight2D" parent="Node2D"]
+z_index = 1
+y_sort_enabled = true
+rotation = 0.0677031
+scale = Vector2(2, 1)
+color = Color(0.658824, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("5_orvaw")
+texture_scale = 0.1
+
+[node name="ShadowLight" type="PointLight2D" parent="Node2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(2, 1)
+color = Color(0.658824, 1, 1, 1)
+energy = 2.0
+range_item_cull_mask = 2
+shadow_enabled = true
+texture = ExtResource("5_orvaw")
+texture_scale = 0.1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
