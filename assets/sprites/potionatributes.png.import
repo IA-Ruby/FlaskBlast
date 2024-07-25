@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5q6cficb7y8o"
-path="res://.godot/imported/lightorb.png-d8d88545717b2eb67316c0342c4a3ca4.ctex"
+uid="uid://cs3nu8kcijfqf"
+path="res://.godot/imported/potionatributes.png-2d35810f486731b301ec15c998e0dad1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/lightorb.png"
-dest_files=["res://.godot/imported/lightorb.png-d8d88545717b2eb67316c0342c4a3ca4.ctex"]
+source_file="res://assets/sprites/potionatributes.png"
+dest_files=["res://.godot/imported/potionatributes.png-2d35810f486731b301ec15c998e0dad1.ctex"]
 
 [params]
 

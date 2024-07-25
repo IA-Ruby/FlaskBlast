@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://6cn4s60shi8s"]
+
+[ext_resource type="Script" path="res://scripts/potion.gd" id="1_xsefw"]
+[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/potions.png" id="2_5pydv"]
+[ext_resource type="Shader" path="res://assets/shaders/potion.gdshader" id="2_8ue0v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_287jn"]
+radius = 5.09902
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pde40"]
+resource_local_to_scene = true
+shader = ExtResource("2_8ue0v")
+shader_parameter/new_color = Color(0.59614, 0.00592497, 0.27353, 1)
+
+[node name="Potion" type="Node2D" groups=["potions"]]
+script = ExtResource("1_xsefw")
+potion_color = Color(0.737425, 0.1802, 0.726319, 1)
+potion_size = 2
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_287jn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pde40")
+texture = ExtResource("2_5pydv")
+hframes = 4
+vframes = 3
+region_rect = Rect2(0, 0, 32, 32)

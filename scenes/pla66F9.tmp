@@ -1,9 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=18 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
 [ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
-[ext_resource type="PackedScene" uid="uid://c8ar6slwgajsr" path="res://scenes/inventory_ui.tscn" id="5_i84sf"]
 [ext_resource type="Texture2D" uid="uid://bpwl1mm64cb6m" path="res://assets/sprites/light.png" id="5_orvaw"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_imdis"]
@@ -22,12 +21,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +53,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -81,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -108,7 +107,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -135,7 +134,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -162,7 +161,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -189,7 +188,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -216,7 +215,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -243,7 +242,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Node2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -268,25 +267,24 @@ _data = {
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hiksw"]
 cull_mode = 1
-polygon = PackedVector2Array(8.52015, 17.6975, 3.78673, 20.3522, -2.84005, 20.3522, -8.52015, 17.6975, -8.52015, 15.9278, -3.78673, 13.2732, 3.78673, 13.2732, 8.52015, 15.9278)
+polygon = PackedVector2Array(9.46679, 17.6976, 3.78672, 21.2371, -3.78672, 21.2371, -9.46679, 17.6976, -9.46679, 15.9278, -3.78672, 12.3883, 3.78672, 12.3883, 9.46679, 15.9278)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw54f"]
 radius = 4.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
-process_mode = 3
+[node name="player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(0, -11)
 script = ExtResource("1_kboq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-48, -11)
+position = Vector2(0, -12)
 texture = SubResource("CanvasTexture_imdis")
-offset = Vector2(48, 11)
+offset = Vector2(0, 12)
 hframes = 4
 vframes = 8
-frame = 8
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -306,13 +304,13 @@ position = Vector2(0, 16)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_xw54f")
 
-[node name="Light2D" type="Node2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 23)
 rotation = -0.0698132
 metadata/_edit_group_ = true
 
-[node name="ObjectLight" type="PointLight2D" parent="Light2D"]
+[node name="ObjectLight" type="PointLight2D" parent="Node2D"]
 z_index = 1
 y_sort_enabled = true
 rotation = 0.0677031
@@ -323,7 +321,7 @@ blend_mode = 2
 texture = ExtResource("5_orvaw")
 texture_scale = 0.1
 
-[node name="ShadowLight" type="PointLight2D" parent="Light2D"]
+[node name="ShadowLight" type="PointLight2D" parent="Node2D"]
 z_index = 1
 y_sort_enabled = true
 scale = Vector2(2, 1)
@@ -335,20 +333,7 @@ shadow_enabled = true
 texture = ExtResource("5_orvaw")
 texture_scale = 0.1
 
-[node name="Inventory_Ui" type="CanvasLayer" parent="."]
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
-[node name="ColorRect" type="ColorRect" parent="Inventory_Ui"]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 124.0
-offset_top = -51.0
-offset_right = -108.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.191748, 0.0883134, 0.0536342, 1)
-
-[node name="Inventory_UI" parent="Inventory_Ui/ColorRect" instance=ExtResource("5_i84sf")]
-layout_mode = 1
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
