@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=20 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
 [ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
+[ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_7vkbd"]
 [ext_resource type="PackedScene" uid="uid://c8ar6slwgajsr" path="res://scenes/inventory_ui.tscn" id="5_i84sf"]
 [ext_resource type="Texture2D" uid="uid://bpwl1mm64cb6m" path="res://assets/sprites/light.png" id="5_orvaw"]
 
@@ -315,7 +316,7 @@ metadata/_edit_group_ = true
 [node name="ObjectLight" type="PointLight2D" parent="Light2D"]
 z_index = 1
 y_sort_enabled = true
-rotation = 0.0677031
+rotation = 0.069213
 scale = Vector2(2, 1)
 color = Color(0.658824, 1, 1, 1)
 energy = 2.0
@@ -326,6 +327,7 @@ texture_scale = 0.1
 [node name="ShadowLight" type="PointLight2D" parent="Light2D"]
 z_index = 1
 y_sort_enabled = true
+rotation = 0.0698132
 scale = Vector2(2, 1)
 color = Color(0.658824, 1, 1, 1)
 energy = 2.0
@@ -337,18 +339,35 @@ texture_scale = 0.1
 
 [node name="Inventory_Ui" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Inventory_Ui"]
-anchors_preset = 12
-anchor_top = 1.0
+[node name="BG" type="ColorRect" parent="Inventory_Ui"]
+modulate = Color(1, 1, 1, 0.541176)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 124.0
-offset_top = -51.0
-offset_right = -108.0
-offset_bottom = -3.0
 grow_horizontal = 2
-grow_vertical = 0
-color = Color(0.191748, 0.0883134, 0.0536342, 1)
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Inventory_UI" parent="Inventory_Ui/ColorRect" instance=ExtResource("5_i84sf")]
-layout_mode = 1
+[node name="Label" type="Label" parent="Inventory_Ui"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_right = 192.0
+offset_bottom = 99.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_7vkbd")
+theme_override_font_sizes/font_size = 64
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory_UI" parent="Inventory_Ui" instance=ExtResource("5_i84sf")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 0.0
+offset_bottom = 0.0

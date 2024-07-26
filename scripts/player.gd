@@ -57,3 +57,15 @@ func _input(event):
 	if event.is_action_pressed("inventory"):
 		inventory_ui.visible = !inventory_ui.visible
 		get_tree().paused = !get_tree().paused
+	if event.is_action_pressed("craft_potion"):
+		var new_potion = {
+			"amount" : 1,
+			"name": "Ultimate Test",
+			"color": Color(1.0,1.0,1.0,1.0),
+			"size": 8,
+			"type": 0,
+			"area": 5,
+			"effect": 10,
+		}
+		Global.add_potion(new_potion,0)
+		pass
