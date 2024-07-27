@@ -7,7 +7,8 @@ var health := 10:
 var shield := 0:
 	set(value):
 		shield = clamp(value, 0, 10)
-
+		
+@onready var camera = $Camera
 @onready var animation_player = $AnimationPlayer
 @onready var light = $Light
 @onready var inventory_ui = $Inventory_Ui

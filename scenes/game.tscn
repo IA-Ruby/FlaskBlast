@@ -218,10 +218,6 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("1_pd12a")]
 position = Vector2(-192, -160)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 10)
-zoom = Vector2(4, 4)
-
 [node name="Light_Crystal" parent="." instance=ExtResource("4_lho5h")]
 position = Vector2(-192, -64)
 

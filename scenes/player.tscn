@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=23 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="2_47vu8"]
 [ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
 [ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/light.tscn" id="4_bl5v7"]
 [ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_7vkbd"]
@@ -18,7 +19,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,13 +40,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 24)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16)]
+}
 
 [sub_resource type="Animation" id="Animation_bg7ka"]
 resource_name = "down"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -72,7 +85,7 @@ resource_name = "down_left"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -99,7 +112,7 @@ resource_name = "down_right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -126,7 +139,7 @@ resource_name = "left"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -153,7 +166,7 @@ resource_name = "right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -180,7 +193,7 @@ resource_name = "top"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -207,7 +220,7 @@ resource_name = "top_left"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -234,7 +247,7 @@ resource_name = "top_right"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -284,7 +297,14 @@ y_sort_enabled = true
 script = ExtResource("1_kboq8")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, 16)
+zoom = Vector2(4, 4)
+script = ExtResource("2_47vu8")
+randomStrength = 4.0
+shakeFade = 10.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(-48, -11)
 texture = SubResource("CanvasTexture_imdis")
 offset = Vector2(48, 11)
@@ -371,7 +391,6 @@ texture = ExtResource("8_mi53g")
 hframes = 3
 vframes = 2
 frame = 3
-metadata/_edit_lock_ = true
 
 [node name="Health2" type="Sprite2D" parent="Health_Bar"]
 position = Vector2(532, 510)
@@ -380,7 +399,6 @@ texture = ExtResource("8_mi53g")
 hframes = 3
 vframes = 2
 frame = 4
-metadata/_edit_lock_ = true
 
 [node name="Health3" type="Sprite2D" parent="Health_Bar"]
 position = Vector2(576, 510)
@@ -388,7 +406,6 @@ scale = Vector2(4, 4)
 texture = ExtResource("8_mi53g")
 hframes = 3
 vframes = 2
-metadata/_edit_lock_ = true
 
 [node name="Health4" type="Sprite2D" parent="Health_Bar"]
 position = Vector2(620, 510)
@@ -397,7 +414,6 @@ texture = ExtResource("8_mi53g")
 hframes = 3
 vframes = 2
 frame = 1
-metadata/_edit_lock_ = true
 
 [node name="Health5" type="Sprite2D" parent="Health_Bar"]
 position = Vector2(664, 510)
@@ -406,4 +422,3 @@ texture = ExtResource("8_mi53g")
 hframes = 3
 vframes = 2
 frame = 2
-metadata/_edit_lock_ = true
