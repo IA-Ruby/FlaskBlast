@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://br5krgjo8nh4x"]
+[gd_scene load_steps=34 format=3 uid="uid://br5krgjo8nh4x"]
 
 [ext_resource type="Script" path="res://scripts/inventory_slot.gd" id="1_ffaii"]
 [ext_resource type="Texture2D" uid="uid://c8kovimu51kno" path="res://assets/sprites/ui.png" id="1_ow8s5"]
@@ -8,12 +8,16 @@
 [ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_24nki"]
 [ext_resource type="Texture2D" uid="uid://b58ylob20sgda" path="res://assets/sprites/scroll.png" id="5_livih"]
 [ext_resource type="Texture2D" uid="uid://cs3nu8kcijfqf" path="res://assets/sprites/potionatributes.png" id="6_vmar4"]
+[ext_resource type="Shader" path="res://assets/shaders/font.gdshader" id="7_mgm63"]
 [ext_resource type="Texture2D" uid="uid://b2ygagd0418i" path="res://assets/sprites/ui_button.png" id="8_53mqp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_73jt4"]
 resource_local_to_scene = true
 shader = ExtResource("3_t040w")
 shader_parameter/new_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k28a0"]
+shader = ExtResource("7_mgm63")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oati3"]
 
@@ -24,6 +28,9 @@ shader_parameter/new_color = null
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kvil4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0qpk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etwj1"]
+shader = ExtResource("7_mgm63")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jyhl"]
 
@@ -84,6 +91,7 @@ vframes = 3
 frame = 5
 
 [node name="Amount" type="Label" parent="."]
+material = SubResource("ShaderMaterial_k28a0")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,7 +102,9 @@ offset_right = -24.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("4_4enue")
 theme_override_font_sizes/font_size = 8
 text = "3
@@ -121,35 +131,38 @@ texture = ExtResource("5_livih")
 metadata/_edit_group_ = true
 
 [node name="Name" type="Label" parent="Description"]
-offset_left = -20.0
-offset_top = -33.0
-offset_right = 60.0
-offset_bottom = 3.0
+material = SubResource("ShaderMaterial_etwj1")
+offset_left = -21.0
+offset_top = -32.0
+offset_right = 63.0
+offset_bottom = 1.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("5_24nki")
 theme_override_font_sizes/font_size = 8
-text = "Potion of Medium Protection"
+text = "No effect
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Type" type="Sprite2D" parent="Description"]
-position = Vector2(-10, -5)
+position = Vector2(-10, -2)
 texture = ExtResource("6_vmar4")
 hframes = 5
 vframes = 4
 
 [node name="Area" type="Sprite2D" parent="Description"]
-position = Vector2(10, -5)
+position = Vector2(10, -2)
 texture = ExtResource("6_vmar4")
 hframes = 5
 vframes = 4
 frame = 5
 
 [node name="Effect" type="Sprite2D" parent="Description"]
-position = Vector2(-1, 15)
+position = Vector2(-1, 18)
 texture = ExtResource("6_vmar4")
 hframes = 5
 vframes = 4
@@ -217,6 +230,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_qu6w0")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_etag5")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_q746f")
 
+[connection signal="hidden" from="." to="." method="_on_hidden"]
 [connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]
 [connection signal="mouse_exited" from="ItemButton" to="." method="_on_item_button_mouse_exited"]
 [connection signal="pressed" from="ItemButton" to="." method="_on_item_button_pressed"]

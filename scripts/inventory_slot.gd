@@ -12,44 +12,64 @@ extends Control
 @onready var craft = $Options/Craft
 @onready var delete = $Options/Delete
 @onready var swap = $Options/Swap
+@onready var item_button = $ItemButton
 
 var potion = null
+var slot_index = -1
+var swap_toggle = false
 
-func _on_item_button_pressed():
-	options.visible = !options.visible
-	description.visible = false
-	
-func _on_item_button_mouse_entered():
-	if potion != null:
-		slot.frame = 1
-	else:
-		slot.frame = 4
-	if !options.visible:
-		description.visible = true
-			
-func _on_item_button_mouse_exited():
-	if potion != null:
-		slot.frame = 0
-	else:
-		slot.frame = 3
-	description.visible = false
-	
+var has_potion = 0
+var has_potion_selected = 1
+var empty = 3
+var empty_selected = 4
+
+func _ready():	
+	if slot_index == Global.active_slot:
+		has_potion = 1
+		empty = 1
+		empty_selected = 1
+
+func set_slot_index(new_index):
+	slot_index = new_index
+
 func set_empty():
 	sprite.visible = false
 	amount.text = ""
-	slot.frame = 3
+	slot.frame = empty
 
 func set_potion(new_potion):
 	potion = new_potion
-	#sprite.texture = new_potion["texture"]
 	potion_name = new_potion["name"]
 	sprite.frame = new_potion["size"]
 	sprite.material.set_shader_parameter("new_color", new_potion["color"])
 	amount.text = str(new_potion["amount"])
 	type.frame = new_potion["type"]
 	area.frame = new_potion["area"]
-	effect.frame	 = new_potion["effect"]	
+	effect.frame = new_potion["effect"]	
 
+func _on_item_button_pressed():
+	if slot_index < 0:
+		if Global.potion_to_swap:
+			Global.slot_swap(get_index())
+		else:
+			options.visible = !options.visible
+			description.visible = false
+	
+func _on_item_button_mouse_entered():
+		if potion:
+			slot.frame = has_potion_selected
+			if slot_index < 0:
+				description.visible = true
+		else:
+			slot.frame = empty_selected
+	
+func _on_item_button_mouse_exited():
+	if potion != null:
+		slot.frame = has_potion
+	else:
+		slot.frame = 3
+	description.visible = false
+	
 func _on_craft_button_button_down():
 	craft.frame = 6
 
@@ -83,18 +103,20 @@ func _on_del_button_mouse_entered():
 
 func _on_del_button_mouse_exited():
 	delete.frame = 1
-
-var swap_toggle := false
-
+	
 func _on_swap_button_button_down():
 	swap.frame = 8
 
 func _on_swap_button_pressed():
-	swap_toggle = !swap_toggle
-	if swap_toggle:
-		swap.frame = 8
-	else: 
-		swap.frame = 5
+	if Global.potion_to_swap:
+			Global.slot_swap(get_index())
+	else:
+		Global.potion_to_swap = get_index()
+		swap_toggle = !swap_toggle
+		if swap_toggle:
+			swap.frame = 8
+		else: 
+			swap.frame = 5
 
 func _on_swap_button_mouse_entered():
 	if swap_toggle:
@@ -107,3 +129,6 @@ func _on_swap_button_mouse_exited():
 		swap.frame = 8
 	else: 
 		swap.frame = 2
+
+func _on_hidden():
+	options.visible = false

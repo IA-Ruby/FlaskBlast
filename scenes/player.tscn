@@ -1,11 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=22 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
 [ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
 [ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_7vkbd"]
 [ext_resource type="PackedScene" uid="uid://c8ar6slwgajsr" path="res://scenes/inventory_ui.tscn" id="5_i84sf"]
-[ext_resource type="Texture2D" uid="uid://bpwl1mm64cb6m" path="res://assets/sprites/light.png" id="5_orvaw"]
+[ext_resource type="Texture2D" uid="uid://bx4mhvgg5tpoo" path="res://assets/sprites/light.png" id="5_orvaw"]
+[ext_resource type="PackedScene" uid="uid://ddkqq34brj7dx" path="res://scenes/inventory_hotbar.tscn" id="7_amla0"]
+[ext_resource type="Texture2D" uid="uid://uhcjvagpqccs" path="res://assets/sprites/health.png" id="8_mi53g"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_imdis"]
 diffuse_texture = ExtResource("1_nkhem")
@@ -28,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -55,7 +57,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -82,7 +84,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -109,7 +111,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -136,7 +138,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -163,7 +165,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -190,7 +192,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -217,7 +219,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -244,7 +246,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light2D:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -269,7 +271,7 @@ _data = {
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hiksw"]
 cull_mode = 1
-polygon = PackedVector2Array(8.52015, 17.6975, 3.78673, 20.3522, -2.84005, 20.3522, -8.52015, 17.6975, -8.52015, 15.9278, -3.78673, 13.2732, 3.78673, 13.2732, 8.52015, 15.9278)
+polygon = PackedVector2Array(7.57346, 17.6975, 3.78673, 19.4673, -2.84005, 19.4673, -7.57346, 17.6975, -7.57346, 15.9278, -3.78673, 14.158, 3.78673, 14.158, 7.57346, 15.9278)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw54f"]
 radius = 4.0
@@ -280,6 +282,7 @@ process_mode = 3
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_kboq8")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-48, -11)
@@ -289,6 +292,7 @@ hframes = 4
 vframes = 8
 frame = 8
 region_rect = Rect2(0, 0, 64, 64)
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -301,43 +305,43 @@ show_behind_parent = true
 position = Vector2(0, -3)
 scale = Vector2(1.05632, 1.1301)
 occluder = SubResource("OccluderPolygon2D_hiksw")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_xw54f")
+metadata/_edit_lock_ = true
 
-[node name="Light2D" type="Node2D" parent="."]
+[node name="Light" type="Node2D" parent="."]
 y_sort_enabled = true
 position = Vector2(0, 23)
 rotation = -0.0698132
 metadata/_edit_group_ = true
 
-[node name="ObjectLight" type="PointLight2D" parent="Light2D"]
+[node name="ObjectLight" type="PointLight2D" parent="Light"]
 z_index = 1
 y_sort_enabled = true
 rotation = 0.069213
-scale = Vector2(2, 1)
-color = Color(0.658824, 1, 1, 1)
-energy = 2.0
-blend_mode = 2
+color = Color(1, 1, 1, 0.752941)
 texture = ExtResource("5_orvaw")
-texture_scale = 0.1
+texture_scale = 0.5
+metadata/_edit_lock_ = true
 
-[node name="ShadowLight" type="PointLight2D" parent="Light2D"]
+[node name="ShadowLight" type="PointLight2D" parent="Light"]
 z_index = 1
 y_sort_enabled = true
 rotation = 0.0698132
-scale = Vector2(2, 1)
-color = Color(0.658824, 1, 1, 1)
-energy = 2.0
-blend_mode = 2
+color = Color(1, 1, 1, 0.752941)
 range_item_cull_mask = 2
 shadow_enabled = true
+shadow_item_cull_mask = 3
 texture = ExtResource("5_orvaw")
-texture_scale = 0.1
+texture_scale = 0.5
+metadata/_edit_lock_ = true
 
 [node name="Inventory_Ui" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="BG" type="ColorRect" parent="Inventory_Ui"]
 modulate = Color(1, 1, 1, 0.541176)
@@ -353,8 +357,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -192.0
+offset_top = 30.0
 offset_right = 192.0
-offset_bottom = 99.0
+offset_bottom = 129.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_7vkbd")
@@ -371,3 +376,57 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="Inventory_Hotbar" type="CanvasLayer" parent="."]
+
+[node name="inventory_Hotbar" parent="Inventory_Hotbar" instance=ExtResource("7_amla0")]
+offset_left = 576.0
+offset_top = 592.0
+offset_right = 576.0
+offset_bottom = 592.0
+
+[node name="Health_Bar" type="CanvasLayer" parent="."]
+
+[node name="Health1" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(488, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 3
+metadata/_edit_lock_ = true
+
+[node name="Health2" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(532, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 4
+metadata/_edit_lock_ = true
+
+[node name="Health3" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(576, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+metadata/_edit_lock_ = true
+
+[node name="Health4" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(620, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 1
+metadata/_edit_lock_ = true
+
+[node name="Health5" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(664, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 2
+metadata/_edit_lock_ = true

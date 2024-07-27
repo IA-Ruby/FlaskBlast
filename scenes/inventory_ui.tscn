@@ -11,7 +11,7 @@ offset_right = -942.0
 offset_bottom = -522.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 script = ExtResource("1_4ldiq")
 
 [node name="GridContainer" type="GridContainer" parent="."]
