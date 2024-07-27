@@ -18,16 +18,14 @@ var potion = null
 var slot_index = -1
 var swap_toggle = false
 
-var has_potion = 0
-var has_potion_selected = 1
-var empty = 3
-var empty_selected = 4
-
-func _ready():	
+func _process(_delta):
 	if slot_index == Global.active_slot:
-		has_potion = 1
-		empty = 1
-		empty_selected = 1
+		slot.frame = 1
+	if swap_toggle:
+		if potion:
+			slot.frame = 1
+		else:
+			slot.frame = 4
 
 func set_slot_index(new_index):
 	slot_index = new_index
@@ -35,7 +33,7 @@ func set_slot_index(new_index):
 func set_empty():
 	sprite.visible = false
 	amount.text = ""
-	slot.frame = empty
+	slot.frame = 3
 
 func set_potion(new_potion):
 	potion = new_potion
@@ -57,15 +55,15 @@ func _on_item_button_pressed():
 	
 func _on_item_button_mouse_entered():
 		if potion:
-			slot.frame = has_potion_selected
+			slot.frame = 1
 			if slot_index < 0:
 				description.visible = true
 		else:
-			slot.frame = empty_selected
+			slot.frame = 4
 	
 func _on_item_button_mouse_exited():
 	if potion != null:
-		slot.frame = has_potion
+		slot.frame = 0
 	else:
 		slot.frame = 3
 	description.visible = false

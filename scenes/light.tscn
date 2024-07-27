@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgg5wypan722r"]
+
+[ext_resource type="Script" path="res://scripts/light.gd" id="1_whyi0"]
+[ext_resource type="Texture2D" uid="uid://bx4mhvgg5tpoo" path="res://assets/sprites/light.png" id="2_mc05q"]
+
+[node name="Light" type="Node2D"]
+script = ExtResource("1_whyi0")
+
+[node name="ObjectLight" type="PointLight2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+color = Color(1, 1, 1, 0.752941)
+texture = ExtResource("2_mc05q")
+texture_scale = 0.5
+metadata/_edit_lock_ = true
+
+[node name="ShadowLight" type="PointLight2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+color = Color(1, 1, 1, 0.752941)
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("2_mc05q")
+texture_scale = 0.5
+metadata/_edit_lock_ = true

@@ -60,7 +60,6 @@ func fill_hotbar_row():
 
 	for i in range(a,(a+5)):
 		add_hotbar_potion(inventory[i],hotbar_slot)
-		print(hotbar_inventory[hotbar_slot], i)
 		hotbar_slot += 1
 	inventory_updated.emit()
 		

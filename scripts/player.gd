@@ -70,13 +70,14 @@ func _input(event):
 		Global.inventory_updated.emit()
 		
 	if event.is_action_pressed("toggle_light"):
-		light.visible = !light.visible
 		Global.player_light = !Global.player_light
+		light.update_light(Global.player_light)
 		
 	if event.is_action_pressed("use_potion") and inventory_ui.visible == false:
 		if Global.get_potion():
 			var potion = Global.get_potion()
 			Global.remove_potion(Global.active_slot+(Global.inventory_row*5))
+			Global.fill_hotbar_row()
 			potion_effect(potion)
 		
 	if event.is_action_pressed("change_hotbar"):

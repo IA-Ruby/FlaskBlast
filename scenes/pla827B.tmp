@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
 [ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
-[ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/light.tscn" id="4_bl5v7"]
 [ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_7vkbd"]
 [ext_resource type="PackedScene" uid="uid://c8ar6slwgajsr" path="res://scenes/inventory_ui.tscn" id="5_i84sf"]
+[ext_resource type="Texture2D" uid="uid://bx4mhvgg5tpoo" path="res://assets/sprites/light.png" id="5_orvaw"]
 [ext_resource type="PackedScene" uid="uid://ddkqq34brj7dx" path="res://scenes/inventory_hotbar.tscn" id="7_amla0"]
 [ext_resource type="Texture2D" uid="uid://uhcjvagpqccs" path="res://assets/sprites/health.png" id="8_mi53g"]
 
@@ -37,7 +37,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 24)]
+"values": [Vector2(0, 23)]
 }
 
 [sub_resource type="Animation" id="Animation_bg7ka"]
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 24)]
+"values": [Vector2(1.86264e-07, 23)]
 }
 
 [sub_resource type="Animation" id="Animation_phrai"]
@@ -91,7 +91,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-9, 20)]
+"values": [Vector2(-12, 20)]
 }
 
 [sub_resource type="Animation" id="Animation_k7xe5"]
@@ -118,7 +118,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, 20)]
+"values": [Vector2(8, 20)]
 }
 
 [sub_resource type="Animation" id="Animation_uqnkt"]
@@ -199,7 +199,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 9)]
+"values": [Vector2(0, 5)]
 }
 
 [sub_resource type="Animation" id="Animation_ce5ul"]
@@ -226,7 +226,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-9, 12)]
+"values": [Vector2(-9, 9)]
 }
 
 [sub_resource type="Animation" id="Animation_weibb"]
@@ -253,7 +253,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, 12)]
+"values": [Vector2(9, 9)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1qkn"]
@@ -294,10 +294,6 @@ frame = 8
 region_rect = Rect2(0, 0, 64, 64)
 metadata/_edit_lock_ = true
 
-[node name="Light" parent="." instance=ExtResource("4_bl5v7")]
-position = Vector2(0, 24)
-energy_off = 0.05
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_k1qkn")
@@ -315,6 +311,33 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 16)
 rotation = 1.57079
 shape = SubResource("CapsuleShape2D_xw54f")
+metadata/_edit_lock_ = true
+
+[node name="Light" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, 23)
+rotation = -0.0698132
+metadata/_edit_group_ = true
+
+[node name="ObjectLight" type="PointLight2D" parent="Light"]
+z_index = 1
+y_sort_enabled = true
+rotation = 0.069213
+color = Color(1, 1, 1, 0.752941)
+texture = ExtResource("5_orvaw")
+texture_scale = 0.5
+metadata/_edit_lock_ = true
+
+[node name="ShadowLight" type="PointLight2D" parent="Light"]
+z_index = 1
+y_sort_enabled = true
+rotation = 0.0698132
+color = Color(1, 1, 1, 0.752941)
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("5_orvaw")
+texture_scale = 0.5
 metadata/_edit_lock_ = true
 
 [node name="Inventory_Ui" type="CanvasLayer" parent="."]
