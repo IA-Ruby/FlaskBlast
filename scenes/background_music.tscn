@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddrlv6p5cv6xa"]
+
+[ext_resource type="AudioStream" uid="uid://4a87gxfq2124" path="res://assets/sound/background_music.mp3" id="1_3ovce"]
+
+[node name="Background_Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_3ovce")
+volume_db = -15.0
+pitch_scale = 0.9
+autoplay = true
+mix_target = 2

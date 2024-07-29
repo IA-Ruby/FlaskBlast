@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=23 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
@@ -8,11 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_7vkbd"]
 [ext_resource type="PackedScene" uid="uid://c8ar6slwgajsr" path="res://scenes/inventory_ui.tscn" id="5_i84sf"]
 [ext_resource type="PackedScene" uid="uid://ddkqq34brj7dx" path="res://scenes/inventory_hotbar.tscn" id="7_amla0"]
-[ext_resource type="PackedScene" uid="uid://cgtb48soc2ine" path="res://scenes/craft_interface.tscn" id="8_hxalo"]
-[ext_resource type="PackedScene" uid="uid://df8tq2n8tk818" path="res://scenes/health_bar.tscn" id="9_xsjac"]
-[ext_resource type="PackedScene" uid="uid://bhsquggs06i16" path="res://scenes/stamina_bar.tscn" id="10_4t5l2"]
-[ext_resource type="PackedScene" uid="uid://cfijgrr8x3h6w" path="res://scenes/light_bar.tscn" id="11_nfpjv"]
-[ext_resource type="PackedScene" uid="uid://chdgw032smccy" path="res://scenes/interact.tscn" id="13_452lc"]
+[ext_resource type="Texture2D" uid="uid://uhcjvagpqccs" path="res://assets/sprites/health.png" id="8_mi53g"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_imdis"]
 diffuse_texture = ExtResource("1_nkhem")
@@ -35,7 +31,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -62,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -89,7 +85,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +112,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -143,7 +139,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -170,7 +166,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -197,7 +193,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -224,7 +220,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -251,7 +247,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("Light:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -306,7 +302,7 @@ frame = 8
 region_rect = Rect2(0, 0, 64, 64)
 metadata/_edit_lock_ = true
 
-[node name="Light_player" parent="." instance=ExtResource("4_bl5v7")]
+[node name="Light" parent="." instance=ExtResource("4_bl5v7")]
 position = Vector2(0, 24)
 energy_off = 0.05
 
@@ -353,12 +349,11 @@ grow_horizontal = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("5_7vkbd")
 theme_override_font_sizes/font_size = 64
-text = "INVENTORY"
+text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Inventory_UI" parent="Inventory_Ui" instance=ExtResource("5_i84sf")]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -367,61 +362,55 @@ anchor_bottom = 0.5
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="Craft_Interface" parent="Inventory_Ui" instance=ExtResource("8_hxalo")]
-visible = false
-offset_left = 576.0
-offset_top = 348.0
-offset_right = 576.0
-offset_bottom = 348.0
-
 [node name="Inventory_Hotbar" type="CanvasLayer" parent="."]
 
-[node name="General_UI" type="CanvasLayer" parent="."]
-
-[node name="Inventory_Hotbar" parent="General_UI" instance=ExtResource("7_amla0")]
+[node name="inventory_Hotbar" parent="Inventory_Hotbar" instance=ExtResource("7_amla0")]
 offset_left = 576.0
 offset_top = 592.0
 offset_right = 576.0
 offset_bottom = 592.0
 
-[node name="Stamina_Bar" parent="General_UI" instance=ExtResource("10_4t5l2")]
-offset_left = 152.0
-offset_top = 164.0
-offset_right = 152.0
-offset_bottom = 164.0
+[node name="Health_Bar" type="CanvasLayer" parent="."]
 
-[node name="Health_Bar" parent="General_UI" instance=ExtResource("9_xsjac")]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-offset_top = -127.0
-offset_bottom = -127.0
-grow_vertical = 0
+[node name="Health1" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(488, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 3
 
-[node name="Light_Bar" parent="General_UI" instance=ExtResource("11_nfpjv")]
-offset_left = 432.0
-offset_top = 488.0
-offset_right = 432.0
-offset_bottom = 488.0
+[node name="Health2" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(532, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 4
 
-[node name="Interact" parent="General_UI" instance=ExtResource("13_452lc")]
-visible = false
-offset_left = 576.0
-offset_top = 347.0
-offset_right = 576.0
-offset_bottom = 347.0
+[node name="Health3" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(576, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
 
-[node name="Interact" type="CanvasLayer" parent="."]
-scale = Vector2(3, 3)
-transform = Transform2D(3, 0, 0, 3, 0, 0)
+[node name="Health4" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(620, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 1
 
-[node name="Stamina_Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
+[node name="Health5" type="Sprite2D" parent="Health_Bar"]
+position = Vector2(664, 510)
+scale = Vector2(4, 4)
+texture = ExtResource("8_mi53g")
+hframes = 3
+vframes = 2
+frame = 2
 
-[node name="Light_Timer" type="Timer" parent="."]
-one_shot = true
+[node name="Timer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Stamina_Timer" to="." method="_on_stamina_timer_timeout"]
-[connection signal="timeout" from="Light_Timer" to="." method="_on_light_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

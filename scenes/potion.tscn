@@ -14,6 +14,8 @@ shader_parameter/new_color = Color(1, 1, 1, 1)
 [node name="Potion" type="Node2D" groups=["potions"]]
 script = ExtResource("1_xsefw")
 potion_color = Color(1, 1, 1, 1)
+potion_power = null
+potion_target = null
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -5,6 +5,9 @@ extends Control
 func _ready():
 	Global.inventory_updated.connect(_on_inventory_updated)
 	_on_inventory_updated()
+	
+func _process(_delta):
+	self.visible = !Global.crafting
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_inventory_updated():

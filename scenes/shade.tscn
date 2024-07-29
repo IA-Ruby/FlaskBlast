@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnik56qen1nk8"]
+
+[ext_resource type="Texture2D" uid="uid://bx4mhvgg5tpoo" path="res://assets/sprites/light.png" id="1_cg2w1"]
+
+[node name="Shade" type="Node2D"]
+z_index = 2
+y_sort_enabled = true
+
+[node name="ObjectLight" type="PointLight2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(2, 2)
+energy = 2.0
+blend_mode = 1
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("1_cg2w1")
+texture_scale = 0.5
+metadata/_edit_lock_ = true

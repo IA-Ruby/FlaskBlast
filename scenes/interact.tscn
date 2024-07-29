@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://chdgw032smccy"]
+
+[ext_resource type="Texture2D" uid="uid://vytm20wufioi" path="res://assets/sprites/interact.png" id="1_x35rc"]
+
+[node name="Interact" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(3, 3)
+
+[node name="Interact" type="Sprite2D" parent="."]
+texture = ExtResource("1_x35rc")

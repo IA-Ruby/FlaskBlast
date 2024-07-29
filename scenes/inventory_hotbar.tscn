@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/inventory_hotbar.gd" id="1_g7cma"]
 
-[node name="inventory_Hotbar" type="Control"]
+[node name="Inventory_Hotbar" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(2, 2)

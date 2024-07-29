@@ -1,0 +1,316 @@
+[gd_scene load_steps=19 format=3 uid="uid://cgtb48soc2ine"]
+
+[ext_resource type="Script" path="res://scripts/craft_interface.gd" id="1_3qnq3"]
+[ext_resource type="Texture2D" uid="uid://bci4lm7sl2pmd" path="res://assets/sprites/craft.png" id="1_nu6k5"]
+[ext_resource type="Shader" path="res://assets/shaders/font.gdshader" id="2_onsjx"]
+[ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_6uaun"]
+[ext_resource type="Texture2D" uid="uid://cs3nu8kcijfqf" path="res://assets/sprites/potionatributes.png" id="4_t2877"]
+[ext_resource type="Texture2D" uid="uid://b2ygagd0418i" path="res://assets/sprites/ui_button.png" id="5_umpy6"]
+[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/potions.png" id="6_i3jwk"]
+[ext_resource type="Shader" path="res://assets/shaders/potion.gdshader" id="6_v5b4j"]
+[ext_resource type="FontFile" uid="uid://dxbmqkslbodvw" path="res://assets/fonts/PixelOperator8.ttf" id="7_pyatv"]
+[ext_resource type="Texture2D" uid="uid://dbcxkooth7glt" path="res://assets/sprites/ui_button_big.png" id="9_qlla3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mov04"]
+shader = ExtResource("2_onsjx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kidn3"]
+shader = ExtResource("6_v5b4j")
+shader_parameter/new_color = Color(0.922774, 0.38788, 0.714507, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i45y5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvtip"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ag60s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ub734"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yekhr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ailgc"]
+shader = ExtResource("2_onsjx")
+
+[node name="Craft_Interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+script = ExtResource("1_3qnq3")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_nu6k5")
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="."]
+material = SubResource("ShaderMaterial_mov04")
+layout_mode = 0
+offset_left = -94.0
+offset_top = -94.0
+offset_right = 95.0
+offset_bottom = -71.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_6uaun")
+theme_override_font_sizes/font_size = 8
+text = "Potion Craft"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="PotionSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_kidn3")
+position = Vector2(42, -42)
+texture = ExtResource("6_i3jwk")
+hframes = 4
+vframes = 3
+metadata/_edit_lock_ = true
+
+[node name="Target" type="Sprite2D" parent="."]
+position = Vector2(-42, -42)
+texture = ExtResource("4_t2877")
+hframes = 4
+vframes = 4
+metadata/_edit_lock_ = true
+
+[node name="IncreaseButtonTarget" type="Sprite2D" parent="Target"]
+position = Vector2(31.5, 0)
+texture = ExtResource("5_umpy6")
+hframes = 4
+vframes = 6
+frame = 16
+metadata/_edit_lock_ = true
+
+[node name="IncreaseButtonTarget" type="Button" parent="Target/IncreaseButtonTarget"]
+offset_left = -9.5
+offset_top = -6.0
+offset_right = 9.5
+offset_bottom = 6.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_lock_ = true
+
+[node name="DecreaseButtonTarget" type="Sprite2D" parent="Target"]
+position = Vector2(-31.5, 0)
+texture = ExtResource("5_umpy6")
+hframes = 4
+vframes = 6
+frame = 20
+metadata/_edit_lock_ = true
+
+[node name="DecreaseButtonTarget" type="Button" parent="Target/DecreaseButtonTarget"]
+offset_left = -9.5
+offset_top = -6.0
+offset_right = 9.5
+offset_bottom = 6.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_lock_ = true
+
+[node name="Type" type="Sprite2D" parent="."]
+position = Vector2(-42, 0)
+texture = ExtResource("4_t2877")
+hframes = 4
+vframes = 4
+frame = 4
+metadata/_edit_lock_ = true
+
+[node name="IncreaseButtonType" type="Sprite2D" parent="Type"]
+position = Vector2(31.5, 0)
+texture = ExtResource("5_umpy6")
+hframes = 4
+vframes = 6
+frame = 16
+metadata/_edit_lock_ = true
+
+[node name="IncreaseButtonType" type="Button" parent="Type/IncreaseButtonType"]
+offset_left = -9.5
+offset_top = -6.0
+offset_right = 9.5
+offset_bottom = 6.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="DecreaseButtonType" type="Sprite2D" parent="Type"]
+position = Vector2(-31.5, 0)
+texture = ExtResource("5_umpy6")
+hframes = 4
+vframes = 6
+frame = 20
+metadata/_edit_lock_ = true
+
+[node name="DecreaseButtonType" type="Button" parent="Type/DecreaseButtonType"]
+offset_left = -9.5
+offset_top = -6.0
+offset_right = 9.5
+offset_bottom = 6.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_lock_ = true
+
+[node name="Amount" type="Label" parent="."]
+material = SubResource("ShaderMaterial_ailgc")
+layout_mode = 0
+offset_left = -58.0
+offset_top = 26.0
+offset_right = -25.0
+offset_bottom = 58.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_6uaun")
+theme_override_font_sizes/font_size = 0
+text = "1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="IncreaseButtonAmount" type="Sprite2D" parent="Amount"]
+position = Vector2(47.5, 16)
+texture = ExtResource("5_umpy6")
+hframes = 4
+vframes = 6
+frame = 16
+metadata/_edit_lock_ = true
+
+[node name="IncreaseButtonAmount" type="Button" parent="Amount/IncreaseButtonAmount"]
+offset_left = -9.5
+offset_top = -6.0
+offset_right = 9.5
+offset_bottom = 6.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_lock_ = true
+
+[node name="DecreaseButtonAmount" type="Sprite2D" parent="Amount"]
+position = Vector2(-15.5, 16)
+texture = ExtResource("5_umpy6")
+hframes = 4
+vframes = 6
+frame = 20
+metadata/_edit_lock_ = true
+
+[node name="DecreaseButtonAmount" type="Button" parent="Amount/DecreaseButtonAmount"]
+offset_left = -9.5
+offset_top = -6.0
+offset_right = 9.5
+offset_bottom = 6.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_lock_ = true
+
+[node name="Confirm" type="Sprite2D" parent="."]
+position = Vector2(42, 81)
+texture = ExtResource("9_qlla3")
+hframes = 3
+vframes = 2
+metadata/_edit_lock_ = true
+
+[node name="ConfirmButton" type="Button" parent="Confirm"]
+anchors_preset = -1
+anchor_left = -0.0125
+anchor_right = 0.4625
+anchor_bottom = 0.461538
+offset_left = -18.5
+offset_top = -12.0
+offset_right = 0.5
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Cancel" type="Sprite2D" parent="."]
+position = Vector2(-42, 81)
+texture = ExtResource("9_qlla3")
+hframes = 3
+vframes = 2
+frame = 3
+metadata/_edit_lock_ = true
+
+[node name="CancelButton" type="Button" parent="Cancel"]
+offset_left = -19.0
+offset_top = -12.0
+offset_right = 19.0
+offset_bottom = 12.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i45y5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pvtip")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ag60s")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ub734")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yekhr")
+metadata/_edit_lock_ = true
+
+[node name="PotionName" type="Label" parent="."]
+material = SubResource("ShaderMaterial_mov04")
+layout_mode = 0
+offset_left = 18.0
+offset_top = -7.0
+offset_right = 68.0
+offset_bottom = 48.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_pyatv")
+theme_override_font_sizes/font_size = 8
+text = "Potion of 
+???"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_lock_ = true
+
+[connection signal="button_down" from="Target/IncreaseButtonTarget/IncreaseButtonTarget" to="." method="_on_increase_button_target_button_down"]
+[connection signal="mouse_entered" from="Target/IncreaseButtonTarget/IncreaseButtonTarget" to="." method="_on_increase_button_target_mouse_entered"]
+[connection signal="mouse_exited" from="Target/IncreaseButtonTarget/IncreaseButtonTarget" to="." method="_on_increase_button_target_mouse_exited"]
+[connection signal="pressed" from="Target/IncreaseButtonTarget/IncreaseButtonTarget" to="." method="_on_increase_button_target_pressed"]
+[connection signal="button_down" from="Target/DecreaseButtonTarget/DecreaseButtonTarget" to="." method="_on_decrease_button_target_button_down"]
+[connection signal="mouse_entered" from="Target/DecreaseButtonTarget/DecreaseButtonTarget" to="." method="_on_decrease_button_target_mouse_entered"]
+[connection signal="mouse_exited" from="Target/DecreaseButtonTarget/DecreaseButtonTarget" to="." method="_on_decrease_button_target_mouse_exited"]
+[connection signal="pressed" from="Target/DecreaseButtonTarget/DecreaseButtonTarget" to="." method="_on_decrease_button_target_pressed"]
+[connection signal="button_down" from="Type/IncreaseButtonType/IncreaseButtonType" to="." method="_on_increase_button_type_button_down"]
+[connection signal="mouse_entered" from="Type/IncreaseButtonType/IncreaseButtonType" to="." method="_on_increase_button_type_mouse_entered"]
+[connection signal="mouse_exited" from="Type/IncreaseButtonType/IncreaseButtonType" to="." method="_on_increase_button_type_mouse_exited"]
+[connection signal="pressed" from="Type/IncreaseButtonType/IncreaseButtonType" to="." method="_on_increase_button_type_pressed"]
+[connection signal="button_down" from="Type/DecreaseButtonType/DecreaseButtonType" to="." method="_on_decrease_button_type_button_down"]
+[connection signal="mouse_entered" from="Type/DecreaseButtonType/DecreaseButtonType" to="." method="_on_decrease_button_type_mouse_entered"]
+[connection signal="mouse_exited" from="Type/DecreaseButtonType/DecreaseButtonType" to="." method="_on_decrease_button_type_mouse_exited"]
+[connection signal="pressed" from="Type/DecreaseButtonType/DecreaseButtonType" to="." method="_on_decrease_button_type_pressed"]
+[connection signal="button_down" from="Amount/IncreaseButtonAmount/IncreaseButtonAmount" to="." method="_on_increase_button_amount_button_down"]
+[connection signal="mouse_entered" from="Amount/IncreaseButtonAmount/IncreaseButtonAmount" to="." method="_on_increase_button_amount_mouse_entered"]
+[connection signal="mouse_exited" from="Amount/IncreaseButtonAmount/IncreaseButtonAmount" to="." method="_on_increase_button_amount_mouse_exited"]
+[connection signal="pressed" from="Amount/IncreaseButtonAmount/IncreaseButtonAmount" to="." method="_on_increase_button_amount_pressed"]
+[connection signal="button_down" from="Amount/DecreaseButtonAmount/DecreaseButtonAmount" to="." method="_on_decrease_button_amount_button_down"]
+[connection signal="mouse_entered" from="Amount/DecreaseButtonAmount/DecreaseButtonAmount" to="." method="_on_decrease_button_amount_mouse_entered"]
+[connection signal="mouse_exited" from="Amount/DecreaseButtonAmount/DecreaseButtonAmount" to="." method="_on_decrease_button_amount_mouse_exited"]
+[connection signal="pressed" from="Amount/DecreaseButtonAmount/DecreaseButtonAmount" to="." method="_on_decrease_button_amount_pressed"]
+[connection signal="button_down" from="Confirm/ConfirmButton" to="." method="_on_confirm_button_button_down"]
+[connection signal="mouse_entered" from="Confirm/ConfirmButton" to="." method="_on_confirm_button_mouse_entered"]
+[connection signal="mouse_exited" from="Confirm/ConfirmButton" to="." method="_on_confirm_button_mouse_exited"]
+[connection signal="pressed" from="Confirm/ConfirmButton" to="." method="_on_confirm_button_pressed"]
+[connection signal="button_down" from="Cancel/CancelButton" to="." method="_on_cancel_button_button_down"]
+[connection signal="mouse_entered" from="Cancel/CancelButton" to="." method="_on_cancel_button_mouse_entered"]
+[connection signal="mouse_exited" from="Cancel/CancelButton" to="." method="_on_cancel_button_mouse_exited"]
+[connection signal="pressed" from="Cancel/CancelButton" to="." method="_on_cancel_button_pressed"]

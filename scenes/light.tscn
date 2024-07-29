@@ -9,7 +9,6 @@ script = ExtResource("1_whyi0")
 [node name="ObjectLight" type="PointLight2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-color = Color(1, 1, 1, 0.752941)
 texture = ExtResource("2_mc05q")
 texture_scale = 0.5
 metadata/_edit_lock_ = true
@@ -17,7 +16,6 @@ metadata/_edit_lock_ = true
 [node name="ShadowLight" type="PointLight2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-color = Color(1, 1, 1, 0.752941)
 range_item_cull_mask = 2
 shadow_enabled = true
 shadow_item_cull_mask = 3

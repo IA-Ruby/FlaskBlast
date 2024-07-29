@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://df8tq2n8tk818"]
+
+[ext_resource type="Texture2D" uid="uid://uhcjvagpqccs" path="res://assets/sprites/health.png" id="1_u1ebl"]
+[ext_resource type="Script" path="res://scripts/health_bar.gd" id="1_wufj3"]
+
+[node name="HealthBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+script = ExtResource("1_wufj3")
+
+[node name="Health1" type="Sprite2D" parent="."]
+position = Vector2(-26, 0)
+texture = ExtResource("1_u1ebl")
+hframes = 3
+vframes = 2
+
+[node name="Health2" type="Sprite2D" parent="."]
+position = Vector2(-13, 0)
+texture = ExtResource("1_u1ebl")
+hframes = 3
+vframes = 2
+
+[node name="Health3" type="Sprite2D" parent="."]
+texture = ExtResource("1_u1ebl")
+hframes = 3
+vframes = 2
+
+[node name="Health4" type="Sprite2D" parent="."]
+position = Vector2(13, 0)
+texture = ExtResource("1_u1ebl")
+hframes = 3
+vframes = 2
+
+[node name="Health5" type="Sprite2D" parent="."]
+position = Vector2(26, 0)
+texture = ExtResource("1_u1ebl")
+hframes = 3
+vframes = 2

@@ -9,8 +9,13 @@ var hotbar_inventory = []
 var inventory_row = 0
 
 var potion_to_swap = null
-var player_light = true
+var player_light = false
 var active_slot = 0
+var crafting = false
+var craft_index = null
+var interact_nearby = false
+
+var objective = 0
 
 func _ready():
 	inventory.resize(15)
@@ -27,8 +32,8 @@ func slot_swap(potion_index):
 	else:
 		potion_to_swap = potion_index
 
-func add_potion(potion, slot):	
-	inventory[slot] = potion
+func add_potion(potion):
+	inventory[craft_index] = potion
 	inventory_updated.emit()
 		
 func get_potion():
@@ -63,3 +68,10 @@ func fill_hotbar_row():
 		hotbar_slot += 1
 	inventory_updated.emit()
 		
+func open_craft(index):
+	craft_index = index
+	crafting = true
+
+func close_craft():
+	craft_index = null
+	crafting = false
