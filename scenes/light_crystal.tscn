@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/light_crystal.gd" id="1_3sjau"]
 [ext_resource type="Texture2D" uid="uid://do2yx3ok6g80j" path="res://assets/sprites/crystal.png" id="1_svnas"]
-[ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/light.tscn" id="2_n2vc3"]
+[ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/components/light_component.tscn" id="2_n2vc3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_auygf"]
 
@@ -20,8 +20,7 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_auygf")
 position = Vector2(0, -31)
 texture = ExtResource("1_svnas")
-offset = Vector2(0, 14)
-metadata/_edit_lock_ = true
+offset = Vector2(0, 16)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 2)

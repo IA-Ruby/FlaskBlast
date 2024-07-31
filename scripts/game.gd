@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var canvas_modulate = $CanvasModulate
+@onready var objectives = $Objectives
 
-func _process(delta):
-	if Global.objective == 5:
-		canvas_modulate.visible = false
+func _ready():
+	Global.set_main_reference(self)

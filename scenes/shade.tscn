@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnik56qen1nk8"]
+[gd_scene load_steps=6 format=3 uid="uid://cnik56qen1nk8"]
 
+[ext_resource type="Script" path="res://scripts/shade.gd" id="1_8ngai"]
 [ext_resource type="Texture2D" uid="uid://bx4mhvgg5tpoo" path="res://assets/sprites/light.png" id="1_cg2w1"]
+[ext_resource type="Script" path="res://scripts/EnemyFollow.gd" id="2_e2dum"]
+[ext_resource type="Script" path="res://scripts/State_Machine.gd" id="3_saxst"]
 
-[node name="Shade" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yylxm"]
+radius = 40.05
+
+[node name="Shade" type="CharacterBody2D"]
 z_index = 2
 y_sort_enabled = true
+script = ExtResource("1_8ngai")
 
 [node name="ObjectLight" type="PointLight2D" parent="."]
 z_index = 1
@@ -17,3 +24,17 @@ shadow_enabled = true
 texture = ExtResource("1_cg2w1")
 texture_scale = 0.5
 metadata/_edit_lock_ = true
+
+[node name="DeathZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZone"]
+scale = Vector2(2, 1)
+shape = SubResource("CircleShape2D_yylxm")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_saxst")
+initial_state = NodePath("EnemyFollow")
+
+[node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("2_e2dum")
+enemy = NodePath("../..")

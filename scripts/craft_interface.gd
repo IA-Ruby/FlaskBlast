@@ -41,16 +41,16 @@ func update_potion_sprite():
 	match(type.frame):
 		4: 
 			color_potion = Color.html("#f79617")
-			name = str("Potion of " + potion_name_size + " Fire Blast")
+			name = str("Potion of " + potion_name_size + " Fire")
 		5: 
 			color_potion = Color.html("#8fd3ff")
-			name = str("Potion of " + potion_name_size + " Freezing Ice")
+			name = str("Potion of " + potion_name_size + " Ice")
 		6: 
 			color_potion = Color.html("#fbff86")
-			name = str("Potion of " + potion_name_size + " Thunder Strike")
+			name = str("Potion of " + potion_name_size + " Thunder")
 		7: 
 			color_potion = Color.html("#165a4c")
-			name = str("Potion of " + potion_name_size + " Poison Cloud")
+			name = str("Potion of " + potion_name_size + " Poison")
 		8: 
 			color_potion = Color.html("#ffffff")
 			name = str("Potion of " + potion_name_size + " Light")
@@ -85,7 +85,8 @@ func _on_confirm_button_pressed():
 		"name": potion_name.text,
 		"color": color_potion,
 		"amount": amount_potion,
-		"size": potion_sprite.frame,
+		"sprite": potion_sprite.frame,
+		"potency": amount_potion,
 		"type": type.frame,
 		"target": target.frame, 
 	}
@@ -186,23 +187,23 @@ func _on_decrease_button_type_button_down():
 		decrease_button_type.frame = button_pressed+20
 
 func _on_increase_button_target_pressed():
-	if target.frame < 3:
+	if target.frame < 2:
 		target.frame += 1
 		if decrease_button_target.frame == button_disabled+20:
 			decrease_button_target.frame = button_inactive+20
-	if target.frame >= 3:
+	if target.frame >= 2:
 		increase_button_target.frame = button_disabled+16
 
 func _on_increase_button_target_mouse_entered():
-	if target.frame < 3:
+	if target.frame < 2:
 		increase_button_target.frame = button_active+16
 
 func _on_increase_button_target_mouse_exited():
-	if target.frame < 3:
+	if target.frame < 2:
 		increase_button_target.frame = button_inactive+16
 
 func _on_increase_button_target_button_down():
-	if target.frame < 3:
+	if target.frame < 2:
 		increase_button_target.frame = button_pressed+16
 
 func _on_decrease_button_target_pressed():

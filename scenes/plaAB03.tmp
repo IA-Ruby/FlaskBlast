@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=30 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
 [ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3bwf8rtkd1sp" path="res://scenes/components/hitbox_component.tscn" id="2_omncf"]
 [ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
 [ext_resource type="PackedScene" uid="uid://cbh6ruq1aqxno" path="res://scenes/components/health_component.tscn" id="3_ayr0k"]
-[ext_resource type="PackedScene" uid="uid://ba5l614b0o1s1" path="res://scenes/components/effect_component.tscn" id="4_5jpe7"]
+[ext_resource type="PackedScene" uid="uid://ba5l614b0o1s1" path="res://scenes/components/status_component.tscn" id="4_46erj"]
 [ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/components/light_component.tscn" id="4_bl5v7"]
 [ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_7vkbd"]
 [ext_resource type="PackedScene" uid="uid://c8ar6slwgajsr" path="res://scenes/inventory_ui.tscn" id="5_i84sf"]
@@ -16,9 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://bhsquggs06i16" path="res://scenes/stamina_bar.tscn" id="10_4t5l2"]
 [ext_resource type="PackedScene" uid="uid://cfijgrr8x3h6w" path="res://scenes/light_bar.tscn" id="11_nfpjv"]
 [ext_resource type="PackedScene" uid="uid://chdgw032smccy" path="res://scenes/interact.tscn" id="13_452lc"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2fris"]
-radius = 4.03113
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_imdis"]
 diffuse_texture = ExtResource("1_nkhem")
@@ -284,31 +281,22 @@ _data = {
 cull_mode = 1
 polygon = PackedVector2Array(7.57346, 17.6975, 3.78673, 19.4673, -2.84005, 19.4673, -7.57346, 17.6975, -7.57346, 15.9278, -3.78673, 14.158, 3.78673, 14.158, 7.57346, 15.9278)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g5uy8"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xw54f"]
 radius = 4.0
+height = 16.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 process_mode = 3
 z_index = 1
 y_sort_enabled = true
-motion_mode = 1
 script = ExtResource("1_kboq8")
 metadata/_edit_lock_ = true
 
-[node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component", "effect_component") instance=ExtResource("2_omncf")]
-health_component = NodePath("../Health_Component")
-effect_component = NodePath("../Effect_Component")
+[node name="Hitbox_Component" parent="." instance=ExtResource("2_omncf")]
 
-[node name="CollisionShapeHitbox" type="CollisionShape2D" parent="Hitbox_Component"]
-position = Vector2(0, 16)
-scale = Vector2(2, 1)
-shape = SubResource("CircleShape2D_2fris")
+[node name="Health_Component" parent="." instance=ExtResource("3_ayr0k")]
 
-[node name="Health_Component" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_ayr0k")]
-health_bar = NodePath("../General_UI/Health_Bar")
-
-[node name="Effect_Component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_5jpe7")]
-health = NodePath("../Health_Component")
+[node name="Status_Component" parent="." instance=ExtResource("4_46erj")]
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, 16)
@@ -318,14 +306,14 @@ randomStrength = 4.0
 shakeFade = 10.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
-y_sort_enabled = true
-position = Vector2(0, -16)
+position = Vector2(-48, -11)
 texture = SubResource("CanvasTexture_imdis")
-offset = Vector2(0, 16)
+offset = Vector2(48, 11)
 hframes = 4
 vframes = 8
 frame = 8
 region_rect = Rect2(0, 0, 64, 64)
+metadata/_edit_lock_ = true
 
 [node name="Light_player" parent="." instance=ExtResource("4_bl5v7")]
 position = Vector2(0, 24)
@@ -346,8 +334,8 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)
-scale = Vector2(2, 1)
-shape = SubResource("CircleShape2D_g5uy8")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_xw54f")
 metadata/_edit_lock_ = true
 
 [node name="Inventory_Ui" type="CanvasLayer" parent="."]
@@ -395,6 +383,8 @@ offset_top = 348.0
 offset_right = 576.0
 offset_bottom = 348.0
 
+[node name="Inventory_Hotbar" type="CanvasLayer" parent="."]
+
 [node name="General_UI" type="CanvasLayer" parent="."]
 
 [node name="Inventory_Hotbar" parent="General_UI" instance=ExtResource("7_amla0")]
@@ -402,14 +392,12 @@ offset_left = 576.0
 offset_top = 592.0
 offset_right = 576.0
 offset_bottom = 592.0
-metadata/_edit_lock_ = true
 
 [node name="Stamina_Bar" parent="General_UI" instance=ExtResource("10_4t5l2")]
 offset_left = 152.0
 offset_top = 164.0
 offset_right = 152.0
 offset_bottom = 164.0
-metadata/_edit_lock_ = true
 
 [node name="Health_Bar" parent="General_UI" node_paths=PackedStringArray("health") instance=ExtResource("9_xsjac")]
 anchors_preset = 7
@@ -420,14 +408,12 @@ offset_top = -127.0
 offset_bottom = -127.0
 grow_vertical = 0
 health = NodePath("../../Health_Component")
-metadata/_edit_lock_ = true
 
 [node name="Light_Bar" parent="General_UI" instance=ExtResource("11_nfpjv")]
 offset_left = 432.0
 offset_top = 488.0
 offset_right = 432.0
 offset_bottom = 488.0
-metadata/_edit_lock_ = true
 
 [node name="Interact" parent="General_UI" instance=ExtResource("13_452lc")]
 visible = false
@@ -435,103 +421,17 @@ offset_left = 576.0
 offset_top = 347.0
 offset_right = 576.0
 offset_bottom = 347.0
-metadata/_edit_lock_ = true
 
-[node name="Win" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Win"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.596078)
-
-[node name="ColorRect2" type="ColorRect" parent="Win"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -111.0
-offset_bottom = 124.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.839216)
-
-[node name="Label" type="Label" parent="Win"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -353.0
-offset_top = -65.5
-offset_right = 353.0
-offset_bottom = 65.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.929412, 1, 0.305882, 1)
-theme_override_fonts/font = ExtResource("5_7vkbd")
-theme_override_font_sizes/font_size = 64
-text = "You found the exit!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Died" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="Died"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.596078)
-
-[node name="ColorRect2" type="ColorRect" parent="Died"]
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -60.0
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.839216)
-
-[node name="Label" type="Label" parent="Died"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -58.0
-offset_top = -11.5
-offset_right = 58.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_7vkbd")
-theme_override_font_sizes/font_size = 64
-text = "YOU DIED"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Interact" type="CanvasLayer" parent="."]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
 
 [node name="Stamina_Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="Light_Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-
-[node name="Reset_Timer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="Stamina_Timer" to="." method="_on_stamina_timer_timeout"]
 [connection signal="timeout" from="Light_Timer" to="." method="_on_light_timer_timeout"]
-[connection signal="timeout" from="Reset_Timer" to="." method="_on_reset_timer_timeout"]

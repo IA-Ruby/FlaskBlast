@@ -41,7 +41,7 @@ func set_potion(new_potion):
 	potion = new_potion
 	potion_name.text = new_potion["name"]
 	sprite.material.set_shader_parameter("new_color", new_potion["color"])
-	sprite.frame = new_potion["size"]
+	sprite.frame = new_potion["sprite"]
 	amount.text = str(new_potion["amount"])
 
 func _on_item_button_pressed():

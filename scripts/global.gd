@@ -7,15 +7,13 @@ signal inventory_updated
 var player_node: Node = null
 var hotbar_inventory = []
 var inventory_row = 0
-
+var item_amount = 0
 var potion_to_swap = null
 var player_light = false
 var active_slot = 0
 var crafting = false
 var craft_index = null
 var interact_nearby = false
-
-var objective = 0
 
 func _ready():
 	inventory.resize(15)
@@ -35,6 +33,8 @@ func slot_swap(potion_index):
 func add_potion(potion):
 	inventory[craft_index] = potion
 	inventory_updated.emit()
+	item_amount += 1
+	print(item_amount)
 		
 func get_potion():
 	return inventory[active_slot+(inventory_row*5)]
@@ -45,6 +45,7 @@ func remove_potion(slot):
 			inventory[slot].amount -= 1
 		else:
 			inventory[slot] = null
+			item_amount -= 1
 	inventory_updated.emit()
 
 func set_player_reference(player):
