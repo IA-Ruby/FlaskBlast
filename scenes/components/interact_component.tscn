@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://chdgw032smccy"]
+
+[ext_resource type="Script" path="res://scripts/interact_component.gd" id="1_d6aid"]
+[ext_resource type="Texture2D" uid="uid://vytm20wufioi" path="res://assets/sprites/ui/interact.png" id="2_gbdnt"]
+
+[node name="InteractComponent" type="Area2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_d6aid")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="Interact" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(192, 118.667)
+texture = ExtResource("2_gbdnt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dngtwii7a68us"]
+
+[node name="CanvasModulate" type="CanvasModulate"]
+visibility_layer = 3
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true

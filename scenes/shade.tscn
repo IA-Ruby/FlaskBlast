@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cnik56qen1nk8"]
 
 [ext_resource type="Script" path="res://scripts/shade.gd" id="1_8ngai"]
-[ext_resource type="Texture2D" uid="uid://bx4mhvgg5tpoo" path="res://assets/sprites/light.png" id="1_cg2w1"]
-[ext_resource type="Script" path="res://scripts/EnemyFollow.gd" id="2_e2dum"]
-[ext_resource type="Script" path="res://scripts/State_Machine.gd" id="3_saxst"]
+[ext_resource type="Texture2D" uid="uid://bx4mhvgg5tpoo" path="res://assets/sprites/effects/light.png" id="1_cg2w1"]
+[ext_resource type="Script" path="res://scripts/states/enemy_follow.gd" id="2_e2dum"]
+[ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="3_saxst"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yylxm"]
 radius = 40.05

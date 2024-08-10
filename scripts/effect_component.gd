@@ -1,7 +1,7 @@
-extends Node2D
 class_name EffectComponent
+extends Node2D
 
-const STATUS_SPRITE = preload("res://scenes/status_sprite.tscn")
+const EFFECT_SPRITE = preload("res://scenes/effect_sprite.tscn")
 
 @export var health : HealthComponent
 
@@ -28,8 +28,7 @@ func apply_status(damage,status, potency):
 		"enemy": dark(damage)
 
 func play_effect(damage, color, time, type):
-	var new_sprite = STATUS_SPRITE.instantiate()
-	print(position)
+	var new_sprite = EFFECT_SPRITE.instantiate()
 	new_sprite.type = type
 	if color: 
 		new_sprite.color = color
@@ -58,9 +57,8 @@ func burning(potency):
 	play_effect(null,null,null,"burn")
 	
 func slowed(damage, potency):
-	print(potency)
 	if get_parent().can_be_slowed:
-		get_parent().slow = 1.5*potency
+		get_parent().speed = get_parent().MAX_SPEED / (1.0 + (0.5 * potency))
 		slowed_timer.set_wait_time(5)
 		slowed_timer.start()
 		play_effect(damage,Color.html("#8fd3ff"),5,"slow")
@@ -133,12 +131,9 @@ func _on_burn_damage_timer(potency):
 		play_effect(new_attack.attack_damage,Color.html("#fb6b1d"),null,"burn")
 	else:
 		burn_damage_timer.stop()
-	
-func _on_burn_damage_timer_timeout():
-	pass # Replace with function body.
 
 func _on_slowed_timer_timeout():
-	get_parent().slow = 0.0
+	get_parent().speed = get_parent().MAX_SPEED
 
 func _on_stunned_timer_timeout():
 	get_parent().stunned = false

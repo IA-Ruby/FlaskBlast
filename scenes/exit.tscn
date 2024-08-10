@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjscqutwbj6qg"]
+
+[ext_resource type="Script" path="res://scripts/exit.gd" id="1_e5kjp"]
+[ext_resource type="PackedScene" uid="uid://chdgw032smccy" path="res://scenes/components/interact_component.tscn" id="2_2tu8o"]
+
+[node name="Exit" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_e5kjp")
+
+[node name="InteractComponent" parent="." instance=ExtResource("2_2tu8o")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractComponent"]
+position = Vector2(0, 2)
+scale = Vector2(1.1, 1.5)
+polygon = PackedVector2Array(19.3939, -1.33333, 0, 5.77778, -19.3939, -1.33333, 0, -8.44444)
+metadata/_edit_lock_ = true

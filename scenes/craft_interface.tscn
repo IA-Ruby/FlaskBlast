@@ -1,15 +1,15 @@
 [gd_scene load_steps=19 format=3 uid="uid://cgtb48soc2ine"]
 
 [ext_resource type="Script" path="res://scripts/craft_interface.gd" id="1_3qnq3"]
-[ext_resource type="Texture2D" uid="uid://bci4lm7sl2pmd" path="res://assets/sprites/craft.png" id="1_nu6k5"]
+[ext_resource type="Texture2D" uid="uid://bci4lm7sl2pmd" path="res://assets/sprites/ui/craft.png" id="1_nu6k5"]
 [ext_resource type="Shader" path="res://assets/shaders/font.gdshader" id="2_onsjx"]
 [ext_resource type="FontFile" uid="uid://bo1fnurd8gxb1" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_6uaun"]
-[ext_resource type="Texture2D" uid="uid://cs3nu8kcijfqf" path="res://assets/sprites/potionatributes.png" id="4_t2877"]
-[ext_resource type="Texture2D" uid="uid://b2ygagd0418i" path="res://assets/sprites/ui_button.png" id="5_umpy6"]
-[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/potions.png" id="6_i3jwk"]
+[ext_resource type="Texture2D" uid="uid://cs3nu8kcijfqf" path="res://assets/sprites/ui/potionatributes.png" id="4_t2877"]
+[ext_resource type="Texture2D" uid="uid://b2ygagd0418i" path="res://assets/sprites/ui/ui_button.png" id="5_umpy6"]
+[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/objects/potions.png" id="6_i3jwk"]
 [ext_resource type="Shader" path="res://assets/shaders/potion.gdshader" id="6_v5b4j"]
 [ext_resource type="FontFile" uid="uid://dxbmqkslbodvw" path="res://assets/fonts/PixelOperator8.ttf" id="7_pyatv"]
-[ext_resource type="Texture2D" uid="uid://dbcxkooth7glt" path="res://assets/sprites/ui_button_big.png" id="9_qlla3"]
+[ext_resource type="Texture2D" uid="uid://dbcxkooth7glt" path="res://assets/sprites/ui/ui_button_big.png" id="9_qlla3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mov04"]
 shader = ExtResource("2_onsjx")

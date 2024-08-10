@@ -1,22 +1,20 @@
+class_name EffectSprite
 extends Control
-class_name Status_Sprite
 
 @export var type : String
 @export var color : Color
 @export var damage : int
 @export var time : float
 
-@onready var status_sprite = $Control/status_sprite
-@onready var damage_label = $Control/damage_label
+@onready var sprite = $Control/Sprite
+@onready var damage_label = $Control/DamageLabel
 
-#@onready var damage_label = $CanvasLayer/Control/damage_label
-#@onready var status_sprite = $CanvasLayer/Control/status_sprite
 @onready var vanish = $Vanish
 @onready var canvas_layer = $CanvasLayer
 
 func _ready():	
 	if type: 
-		status_sprite.play(type)
+		sprite.play(type)
 	if damage:
 		damage_label.visible = true
 		damage_label.text = str(damage)
@@ -29,7 +27,6 @@ func _ready():
 func _process(_delta):
 	if get_parent().health.shield == 0 and type == "shield":
 		self.queue_free()
-		canvas_layer.position += Vector2(100,100)
 	
 func _on_vanish_timeout():
 	self.queue_free()

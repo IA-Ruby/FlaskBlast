@@ -1,7 +1,8 @@
+class_name PotionProjectile
 extends Node2D
-class_name Potion_Projectile
 
 @onready var sprite = $Sprite
+@onready var aoe = $Aoe
 
 @export var SPEED = 100.0
 
@@ -9,8 +10,6 @@ var direction : Vector2
 var new_attack : Attack
 var sprite_frame : int
 var sprite_shader : Color
-
-@onready var aoe = $Aoe
 
 func _ready():
 	sprite.frame = sprite_frame
@@ -31,7 +30,7 @@ func _on_body_entered(body):
 		queue_free()
 
 func _on_area_entered(area):
-	if area is Hitbox_Component:
+	if area is HitboxComponent:
 		if area.get_parent() != Global.player_node:
 			if new_attack.attack_type == "single":
 					if area.has_method("damage"):

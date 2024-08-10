@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmda3wtl5fsyv"]
 
 [ext_resource type="Script" path="res://scripts/potion_projectile.gd" id="1_b7a7i"]
-[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/potions.png" id="1_s1dv8"]
+[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/objects/potions.png" id="1_s1dv8"]
 [ext_resource type="Shader" path="res://assets/shaders/potion.gdshader" id="2_nvr1f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ia63e"]
@@ -14,12 +14,12 @@ shader_parameter/new_color = null
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ptdw7"]
 
-[node name="Potion_Projectile" type="Area2D"]
+[node name="PotionProjectile" type="Area2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_b7a7i")
 
-[node name="Single_area" type="CollisionShape2D" parent="."]
+[node name="SingleArea" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_ia63e")
 
@@ -35,7 +35,7 @@ frame = 5
 
 [node name="Aoe" type="Area2D" parent="."]
 
-[node name="Aoe_area" type="CollisionShape2D" parent="Aoe"]
+[node name="AoeArea" type="CollisionShape2D" parent="Aoe"]
 position = Vector2(0, -16)
 rotation = 1.5708
 scale = Vector2(2, 2)

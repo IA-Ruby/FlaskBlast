@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/effect_component.gd" id="1_fale2"]
 
-[node name="Effect_Component" type="Node2D"]
+[node name="EffectComponent" type="Node2D"]
 script = ExtResource("1_fale2")
 
 [node name="PoisonedTimer" type="Timer" parent="."]
@@ -30,7 +30,6 @@ one_shot = true
 [node name="LightTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="PoisonedTimer/PoisonDamageTimer" to="." method="_on_poison_damage_timer_timeout"]
-[connection signal="timeout" from="BurningTimer/BurnDamageTimer" to="." method="_on_burn_damage_timer_timeout"]
 [connection signal="timeout" from="SlowedTimer" to="." method="_on_slowed_timer_timeout"]
 [connection signal="timeout" from="StunnedTimer" to="." method="_on_stunned_timer_timeout"]
 [connection signal="timeout" from="ShieldedTimer" to="." method="_on_shielded_timer_timeout"]

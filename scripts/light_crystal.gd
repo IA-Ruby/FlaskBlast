@@ -18,13 +18,3 @@ func _process(_delta):
 		interactable = false
 		Global.interact_nearby = false
 		
-func _on_area_2d_body_entered(body):
-	if body == Global.player_node:
-		if interactable == true:
-			Global.interact_nearby = true
-		player_inside = true
-
-func _on_area_2d_body_exited(body):
-	if body == Global.player_node:
-		Global.interact_nearby = false
-	player_inside = false

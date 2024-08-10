@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhsquggs06i16"]
 
 [ext_resource type="Script" path="res://scripts/stamina_bar.gd" id="1_24m0t"]
-[ext_resource type="Texture2D" uid="uid://bidm23o47rl7u" path="res://assets/sprites/stamina.png" id="1_rysnd"]
+[ext_resource type="Texture2D" uid="uid://bidm23o47rl7u" path="res://assets/sprites/ui/stamina.png" id="1_rysnd"]
 
-[node name="Stamina_Bar" type="Control"]
+[node name="StaminaBar" type="Control"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

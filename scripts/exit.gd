@@ -1,19 +1,11 @@
 extends Node2D
 
-@onready var area_2d = $Area2D
+@onready var interact_component = $InteractComponent
 
 var player_inside = false
 
-func _process(delta):
-	if Input.is_action_just_pressed("Interact"):
-		Global.player_node.win()
+func _ready():
+	interact_component.interact = Callable(self,"_on_interact")
 
-func _on_area_2d_body_entered(body):
-	if body == Global.player_node:
-		Global.interact_nearby = true
-		player_inside = true
-
-func _on_area_2d_body_exited(body):
-	if body == Global.player_node:
-		Global.interact_nearby = false
-		player_inside = false
+func _on_interact():
+	Global.player_node.win()

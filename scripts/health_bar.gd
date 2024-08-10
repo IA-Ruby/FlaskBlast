@@ -1,5 +1,5 @@
-extends Control
 class_name HealthBar
+extends Control
 
 @export var health = HealthComponent
 

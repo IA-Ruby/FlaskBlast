@@ -11,19 +11,20 @@ config_version=5
 [application]
 
 config/name="FlaskBlast"
-run/main_scene="res://scenes/game.tscn"
+run/main_scene="res://scenes/levels/test_map.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
 Global="*res://scripts/global.gd"
 BackgroundMusic="*res://scenes/background_music.tscn"
+GlobalCanvasModulate="*res://scenes/canvas_modulate.tscn"
 
 [display]
 
 window/stretch/mode="viewport"
-mouse_cursor/custom_image="res://assets/sprites/mouse.png"
+mouse_cursor/custom_image="res://assets/sprites/ui/mouse.png"
 
 [input]
 

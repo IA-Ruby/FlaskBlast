@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-@onready var main = get_tree().get_root().get_node("MainLevel")
+@onready var main = get_tree().get_root().get_child(1)
 const POTION_PROJECTILE = preload("res://scenes/potion_projectile.tscn")
 
 const MAX_SPEED = 5000.0
-var SPEED = MAX_SPEED
+var speed = MAX_SPEED
 
 var STAMINA := 100.0:
 	set(value):
 		STAMINA = clamp(value, 0.0,100.0)
 const DEFAULT_STAMINA_REGEN = 10.0
-var stamina_regen := 10.0		
+var stamina_regen := 10.0
 var stamina_can_regen := true
 
 var LIGHT := 100.0:
@@ -21,7 +21,6 @@ var light_regen := 20.0
 var light_can_regen := false
 
 var can_be_slowed = true
-var slow = 0
 var can_be_stunned = true
 var stunned = false
 
@@ -29,19 +28,18 @@ var full_stop = false
 
 @onready var camera = $Camera
 @onready var animation_player = $AnimationPlayer
-@onready var light_player = $Light_player
-@onready var inventory_ui = $Inventory_Ui
-@onready var general_ui = $General_UI
-@onready var inventory_hotbar = $General_UI/Inventory_Hotbar
-@onready var stamina_bar = $General_UI/Stamina_Bar
-@onready var health_bar = $General_UI/Health_Bar
-@onready var light_bar = $General_UI/Light_Bar
-@onready var interact = $General_UI/Interact
-@onready var stamina_timer = $Stamina_Timer
-@onready var light_timer = $Light_Timer
-@onready var hitbox_component = $Hitbox_Component
-@onready var health_component = $Health_Component
-@onready var reset_timer = $Reset_Timer
+@onready var light_player = $LightComponent
+@onready var inventory_ui = $InventoryUI
+@onready var general_ui = $GeneralUI
+@onready var inventory_hotbar = $GeneralUI/InventoryHotbar
+@onready var stamina_bar = $GeneralUI/StaminaBar
+@onready var health_bar = $GeneralUI/HealthBar
+@onready var light_bar = $GeneralUI/LightBar
+@onready var stamina_timer = $StaminaTimer
+@onready var light_timer = $LightTimer
+@onready var hitbox_component = $HitboxComponent
+@onready var health_component = $HealthComponent
+@onready var reset_timer = $ResetTimer
 @onready var died_screen = $Died
 @onready var win_screen = $Win
 
@@ -60,16 +58,13 @@ func _physics_process(delta):
 		check_light(delta)
 		light_bar.update_light_bar(LIGHT)
 	
-		check_interact()
-	
 func _input(event):
 	if !full_stop:
 		if event.is_action_pressed("use_potion") and inventory_ui.visible == false and !stunned:
 			if Global.get_potion():
-				var potion = Global.get_potion()
+				use_potion()
 				Global.remove_potion(Global.active_slot+(Global.inventory_row*5))
 				Global.fill_hotbar_row()
-				use_potion(potion)
 						
 		if event.is_action_pressed("inventory"):
 			if Global.crafting:
@@ -139,7 +134,7 @@ func move_player(delta):
 	if !stunned:
 		var direction = Input.get_vector("left","right","up","down")	
 		if direction:
-			self.velocity = SPEED * direction * delta 
+			self.velocity = speed * direction * delta 
 			if direction.y != 0:
 				self.velocity *=  Vector2(1,0.5) 
 			if Input.is_action_pressed("sprint") and STAMINA > 0.0:
@@ -147,7 +142,7 @@ func move_player(delta):
 				STAMINA -= 25.0 * delta
 				stamina_can_regen = false
 				stamina_timer.start()
-			self.velocity = self.velocity / (1.0 + slow + (float(Global.item_amount)/15))
+			self.velocity = self.velocity / (1.0 + (float(Global.item_amount)/15))
 		else:
 			self.velocity = Vector2.ZERO
 		update_sprite(direction)
@@ -186,23 +181,14 @@ func check_light(delta):
 	else:
 		Global.player_light = false
 		light_player.update_light(false)
-	
-func check_interact():
-	if !inventory_ui.visible:
-		if Global.interact_nearby:
-			interact.visible = true
-		else:
-			interact.visible = false
-	else:
-		interact.visible = false
 
-func use_potion(potion):
+func use_potion():
+	var potion = Global.get_potion()
 	var new_attack = Attack.new()
-	if potion["potency"] == 3: new_attack.effect_potency = 1
-	if potion["potency"] == 2: new_attack.effect_potency = 2
-	if potion["potency"] == 1: new_attack.effect_potency = 3
 	
-	match potion["type"]:
+	new_attack.effect_potency = potion.potion_potency
+	
+	match potion.potion_type:
 		4: 
 			new_attack.attack_effect = "burn"
 			new_attack.attack_damage = 0
@@ -229,21 +215,21 @@ func use_potion(potion):
 			new_attack.attack_effect = "heal"
 			new_attack.attack_damage = 0
 				
-	if potion["target"] == 0:
+	if potion.potion_target== 0:
 		hitbox_component.damage(new_attack)
 	else:
-		if potion["target"] == 1:	
+		if potion.potion_target == 1:	
 			new_attack.attack_type = "single"
 		else: 
 			new_attack.attack_type = "aoe"
 		#3: new_attack.attack_type = "lingering" Not enough time ;-;
-		throw_potion(POTION_PROJECTILE,potion, new_attack)
+		throw_potion(potion, new_attack)
 	
-func throw_potion(projectile, potion, new_attack):
-	var potion_instance = projectile.instantiate()
+func throw_potion(potion : Potion, new_attack : Attack):
+	var potion_instance = POTION_PROJECTILE.instantiate()
 	potion_instance.new_attack = new_attack
-	potion_instance.sprite_frame = potion["sprite"]
-	potion_instance.sprite_shader = potion["color"] 
+	potion_instance.sprite_frame = potion.potion_sprite
+	potion_instance.sprite_shader = potion.potion_color 
 	potion_instance.position = global_position - Vector2(0,-16)
 	potion_instance.direction = global_position.direction_to(get_global_mouse_position())
 	main.add_child.call_deferred(potion_instance)
@@ -261,7 +247,7 @@ func lose():
 		reset_timer.start()
 
 func _on_light_timer_timeout():
-	#light_can_regen = true
+	light_can_regen = true
 	pass
 	
 func _on_stamina_timer_timeout():

@@ -19,7 +19,7 @@ const button_active = 1
 const button_pressed = 2
 const button_disabled = 3
 
-var color_potion = Color(1.0,1.0,1.0,1.0)
+var potion_color = Color(1.0,1.0,1.0,1.0)
 var amount_potion = 1
 
 func _ready():
@@ -40,32 +40,32 @@ func update_potion_sprite():
 		
 	match(type.frame):
 		4: 
-			color_potion = Color.html("#f79617")
+			potion_color = Color.html("#f79617")
 			name = str("Potion of " + potion_name_size + " Fire")
 		5: 
-			color_potion = Color.html("#8fd3ff")
+			potion_color = Color.html("#8fd3ff")
 			name = str("Potion of " + potion_name_size + " Ice")
 		6: 
-			color_potion = Color.html("#fbff86")
+			potion_color = Color.html("#fbff86")
 			name = str("Potion of " + potion_name_size + " Thunder")
 		7: 
-			color_potion = Color.html("#165a4c")
+			potion_color = Color.html("#165a4c")
 			name = str("Potion of " + potion_name_size + " Poison")
 		8: 
-			color_potion = Color.html("#ffffff")
+			potion_color = Color.html("#ffffff")
 			name = str("Potion of " + potion_name_size + " Light")
 		9: 
-			color_potion = Color.html("#9babb2")
+			potion_color = Color.html("#9babb2")
 			name = str("Potion of " + potion_name_size + " Protection")
 		10: 
-			color_potion = Color.html("#1ebc73")
+			potion_color = Color.html("#1ebc73")
 			name = str("Potion of " + potion_name_size + " Haste")
 		11: 
-			color_potion = Color.html("#e83b3b")
+			potion_color = Color.html("#e83b3b")
 			name = str("Potion of " + potion_name_size + " Healing")
 
 	potion_name.text = name
-	potion_sprite.material.set_shader_parameter("new_color", color_potion)
+	potion_sprite.material.set_shader_parameter("new_color", potion_color)
 	potion_sprite.frame = (target.frame + ((amount_potion-1)*4)) #Big bain XD 
 	
 func _on_cancel_button_pressed():
@@ -81,15 +81,17 @@ func _on_cancel_button_button_down():
 	cancel.frame = button_pressed+3
 
 func _on_confirm_button_pressed():
-	var new_potion = {
-		"name": potion_name.text,
-		"color": color_potion,
-		"amount": amount_potion,
-		"sprite": potion_sprite.frame,
-		"potency": amount_potion,
-		"type": type.frame,
-		"target": target.frame, 
-	}
+	var new_potion = Potion.new()
+	new_potion.potion_name = potion_name.text
+	new_potion.potion_color = potion_color
+	new_potion.potion_amount = amount_potion
+	new_potion.potion_sprite = potion_sprite.frame
+	new_potion.potion_type = type.frame
+	new_potion.potion_target = target.frame
+	match(amount_potion):
+		1: new_potion.potion_potency = 3
+		2: new_potion.potion_potency = 2
+		3: new_potion.potion_potency = 1
 	Global.add_potion(new_potion)
 	Global.crafting = false
 

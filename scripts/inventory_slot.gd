@@ -3,7 +3,7 @@ extends Control
 @onready var slot = $Slot
 @onready var sprite = $PotionSprite
 @onready var amount = $Amount
-@onready var potion_name = $Description/Potion_Name
+@onready var potion_name = $Description/PotionName
 @onready var description = $Description
 @onready var options = $Options
 @onready var craft = $Options/Craft
@@ -11,7 +11,7 @@ extends Control
 @onready var swap = $Options/Swap
 @onready var item_button = $ItemButton
 
-var potion = null
+var potion : Potion
 var slot_index = -1
 var swap_toggle = false
 
@@ -37,12 +37,12 @@ func set_empty():
 	amount.text = ""
 	slot.frame = 3
 
-func set_potion(new_potion):
+func set_potion(new_potion: Potion):
 	potion = new_potion
-	potion_name.text = new_potion["name"]
-	sprite.material.set_shader_parameter("new_color", new_potion["color"])
-	sprite.frame = new_potion["sprite"]
-	amount.text = str(new_potion["amount"])
+	potion_name.text = new_potion.potion_name
+	sprite.material.set_shader_parameter("new_color", new_potion.potion_color)
+	sprite.frame = new_potion.potion_sprite
+	amount.text = str(new_potion.potion_amount)
 
 func _on_item_button_pressed():
 	if slot_index < 0:

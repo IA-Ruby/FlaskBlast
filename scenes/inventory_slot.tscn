@@ -1,13 +1,13 @@
 [gd_scene load_steps=32 format=3 uid="uid://br5krgjo8nh4x"]
 
 [ext_resource type="Script" path="res://scripts/inventory_slot.gd" id="1_ffaii"]
-[ext_resource type="Texture2D" uid="uid://c8kovimu51kno" path="res://assets/sprites/ui.png" id="1_ow8s5"]
-[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/potions.png" id="3_5h4em"]
+[ext_resource type="Texture2D" uid="uid://c8kovimu51kno" path="res://assets/sprites/ui/ui.png" id="1_ow8s5"]
+[ext_resource type="Texture2D" uid="uid://dp1fkb5ncy44g" path="res://assets/sprites/objects/potions.png" id="3_5h4em"]
 [ext_resource type="Shader" path="res://assets/shaders/potion.gdshader" id="3_t040w"]
 [ext_resource type="FontFile" uid="uid://dxbmqkslbodvw" path="res://assets/fonts/PixelOperator8.ttf" id="4_4enue"]
-[ext_resource type="Texture2D" uid="uid://b58ylob20sgda" path="res://assets/sprites/scroll.png" id="5_livih"]
+[ext_resource type="Texture2D" uid="uid://b58ylob20sgda" path="res://assets/sprites/ui/scroll.png" id="5_livih"]
 [ext_resource type="Shader" path="res://assets/shaders/font.gdshader" id="7_mgm63"]
-[ext_resource type="Texture2D" uid="uid://b2ygagd0418i" path="res://assets/sprites/ui_button.png" id="8_53mqp"]
+[ext_resource type="Texture2D" uid="uid://b2ygagd0418i" path="res://assets/sprites/ui/ui_button.png" id="8_53mqp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_73jt4"]
 resource_local_to_scene = true
@@ -60,7 +60,7 @@ shader = ExtResource("7_mgm63")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q746f"]
 
-[node name="Inventory_Slot" type="Control"]
+[node name="InventorySlot" type="Control"]
 custom_minimum_size = Vector2(42, 42)
 layout_mode = 3
 anchors_preset = 15
@@ -127,7 +127,7 @@ z_index = 1
 position = Vector2(74, 32)
 texture = ExtResource("5_livih")
 
-[node name="Potion_Name" type="Label" parent="Description"]
+[node name="PotionName" type="Label" parent="Description"]
 material = SubResource("ShaderMaterial_etwj1")
 offset_left = -25.0
 offset_top = -31.0

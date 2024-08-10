@@ -1,14 +1,13 @@
-[gd_scene load_steps=63 format=3 uid="uid://c3x5sxpcx6a4y"]
+[gd_scene load_steps=62 format=3 uid="uid://c3x5sxpcx6a4y"]
 
 [ext_resource type="Script" path="res://scripts/enemy_shadow.gd" id="1_a8o76"]
-[ext_resource type="Texture2D" uid="uid://bwcd54rl665eo" path="res://assets/sprites/enemy.png" id="1_oiotk"]
+[ext_resource type="Texture2D" uid="uid://bwcd54rl665eo" path="res://assets/sprites/characters/enemy.png" id="1_oiotk"]
 [ext_resource type="PackedScene" uid="uid://ba5l614b0o1s1" path="res://scenes/components/effect_component.tscn" id="2_ggdcn"]
 [ext_resource type="PackedScene" uid="uid://cbh6ruq1aqxno" path="res://scenes/components/health_component.tscn" id="3_4ugsc"]
 [ext_resource type="PackedScene" uid="uid://3bwf8rtkd1sp" path="res://scenes/components/hitbox_component.tscn" id="4_nuc2v"]
-[ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/components/light_component.tscn" id="5_i7ype"]
-[ext_resource type="Script" path="res://scripts/State_Machine.gd" id="7_he4yh"]
-[ext_resource type="Script" path="res://scripts/EnemyIdle.gd" id="8_43ma2"]
-[ext_resource type="Script" path="res://scripts/EnemyFollow.gd" id="9_mc8c0"]
+[ext_resource type="Script" path="res://scripts/states/state_machine.gd" id="7_he4yh"]
+[ext_resource type="Script" path="res://scripts/states/enemy_idle.gd" id="8_43ma2"]
+[ext_resource type="Script" path="res://scripts/states/enemy_follow.gd" id="9_mc8c0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k512f"]
 radius = 8.0
@@ -406,49 +405,46 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xvvh"]
 radius = 12.0416
 
-[node name="enemy_shadow" type="CharacterBody2D"]
+[node name="EnemyShadow" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 motion_mode = 1
 slide_on_ceiling = false
 script = ExtResource("1_a8o76")
 
-[node name="Health_Component" parent="." instance=ExtResource("3_4ugsc")]
+[node name="HealthComponent" parent="." instance=ExtResource("3_4ugsc")]
+MAX_HEALTH = 20
 
-[node name="Effect_Component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_ggdcn")]
-health = NodePath("../Health_Component")
+[node name="EffectComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("2_ggdcn")]
+health = NodePath("../HealthComponent")
 
-[node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component", "effect_component") instance=ExtResource("4_nuc2v")]
-health_component = NodePath("../Health_Component")
-effect_component = NodePath("../Effect_Component")
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "effect_component") instance=ExtResource("4_nuc2v")]
+health_component = NodePath("../HealthComponent")
+effect_component = NodePath("../EffectComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Component"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 rotation = 1.5708
 scale = Vector2(1, 2)
 shape = SubResource("CircleShape2D_k512f")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -36)
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_urevo")
-animation = &"top_right"
+animation = &"top"
 autoplay = "default"
-offset = Vector2(0, 16)
+offset = Vector2(0, -16)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 scale = Vector2(1, 2)
 shape = SubResource("CircleShape2D_0lwm7")
 
-[node name="Check_light" type="Area2D" parent="."]
+[node name="CheckLight" type="Area2D" parent="."]
 
-[node name="CheckLightShape" type="CollisionShape2D" parent="Check_light"]
+[node name="CheckLightShape" type="CollisionShape2D" parent="CheckLight"]
 rotation = 1.5708
 scale = Vector2(1, 2)
 shape = SubResource("CircleShape2D_k5wb0")
-
-[node name="Light_Component" parent="." instance=ExtResource("5_i7ype")]
-visible = false
-mode = 1
 
 [node name="HitZone" type="Area2D" parent="."]
 
@@ -468,5 +464,5 @@ enemy = NodePath("../..")
 script = ExtResource("9_mc8c0")
 enemy = NodePath("../..")
 
-[connection signal="area_entered" from="Hitbox_Component" to="." method="_on_hitbox_component_area_entered"]
-[connection signal="area_entered" from="Check_light" to="." method="_on_check_light_area_entered"]
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="area_entered" from="CheckLight" to="." method="_on_check_light_area_entered"]

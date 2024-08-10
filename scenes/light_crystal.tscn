@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c41gd0571u2mp"]
 
 [ext_resource type="Script" path="res://scripts/light_crystal.gd" id="1_3sjau"]
-[ext_resource type="Texture2D" uid="uid://do2yx3ok6g80j" path="res://assets/sprites/crystal.png" id="1_svnas"]
+[ext_resource type="Texture2D" uid="uid://do2yx3ok6g80j" path="res://assets/sprites/objects/crystal.png" id="1_svnas"]
 [ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/components/light_component.tscn" id="2_n2vc3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_auygf"]
@@ -9,18 +9,17 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_s78ex"]
 radius = 19.0263
 
-[node name="Light_Crystal" type="StaticBody2D"]
+[node name="LightCrystal" type="StaticBody2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_3sjau")
-metadata/_edit_lock_ = true
 
 [node name="Cystal" type="Sprite2D" parent="."]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_auygf")
-position = Vector2(0, -31)
+position = Vector2(0, -3)
 texture = ExtResource("1_svnas")
-offset = Vector2(0, 16)
+offset = Vector2(0, -13)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, 2)

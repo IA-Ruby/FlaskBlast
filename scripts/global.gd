@@ -30,7 +30,7 @@ func slot_swap(potion_index):
 	else:
 		potion_to_swap = potion_index
 
-func add_potion(potion):
+func add_potion(potion : Potion):
 	inventory[craft_index] = potion
 	inventory_updated.emit()
 	item_amount += 1
@@ -41,8 +41,8 @@ func get_potion():
 	
 func remove_potion(slot):
 	if(inventory[slot] != null):
-		if inventory[slot].amount > 1:
-			inventory[slot].amount -= 1
+		if inventory[slot].potion_amount > 1:
+			inventory[slot].potion_amount -= 1
 		else:
 			inventory[slot] = null
 			item_amount -= 1

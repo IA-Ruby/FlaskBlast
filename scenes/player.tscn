@@ -1,10 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://cpy1qg6px1xdy"]
+[gd_scene load_steps=30 format=3 uid="uid://cpy1qg6px1xdy"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kboq8"]
-[ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/player.png" id="1_nkhem"]
+[ext_resource type="Texture2D" uid="uid://cs1od168y4h8c" path="res://assets/sprites/characters/player.png" id="1_nkhem"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="2_47vu8"]
 [ext_resource type="PackedScene" uid="uid://3bwf8rtkd1sp" path="res://scenes/components/hitbox_component.tscn" id="2_omncf"]
-[ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/playernormalmap.png" id="3_0jblh"]
+[ext_resource type="Texture2D" uid="uid://hjgwyjm80cu7" path="res://assets/sprites/characters/playernormalmap.png" id="3_0jblh"]
 [ext_resource type="PackedScene" uid="uid://cbh6ruq1aqxno" path="res://scenes/components/health_component.tscn" id="3_ayr0k"]
 [ext_resource type="PackedScene" uid="uid://ba5l614b0o1s1" path="res://scenes/components/effect_component.tscn" id="4_5jpe7"]
 [ext_resource type="PackedScene" uid="uid://cgg5wypan722r" path="res://scenes/components/light_component.tscn" id="4_bl5v7"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://df8tq2n8tk818" path="res://scenes/health_bar.tscn" id="9_xsjac"]
 [ext_resource type="PackedScene" uid="uid://bhsquggs06i16" path="res://scenes/stamina_bar.tscn" id="10_4t5l2"]
 [ext_resource type="PackedScene" uid="uid://cfijgrr8x3h6w" path="res://scenes/light_bar.tscn" id="11_nfpjv"]
-[ext_resource type="PackedScene" uid="uid://chdgw032smccy" path="res://scenes/interact.tscn" id="13_452lc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fris"]
 radius = 4.03113
@@ -41,14 +40,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 24)]
+"values": [Vector2(0, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_bg7ka"]
@@ -68,14 +67,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 24)]
+"values": [Vector2(0, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_phrai"]
@@ -95,14 +94,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-9, 20)]
+"values": [Vector2(-9, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_k7xe5"]
@@ -122,14 +121,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, 20)]
+"values": [Vector2(9, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_uqnkt"]
@@ -149,14 +148,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-12, 16)]
+"values": [Vector2(-12, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hqlsr"]
@@ -176,14 +175,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(12, 16)]
+"values": [Vector2(12, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vpe64"]
@@ -203,14 +202,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 9)]
+"values": [Vector2(0, -7)]
 }
 
 [sub_resource type="Animation" id="Animation_ce5ul"]
@@ -230,14 +229,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-9, 12)]
+"values": [Vector2(-9, -4)]
 }
 
 [sub_resource type="Animation" id="Animation_weibb"]
@@ -257,14 +256,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light_player:position")
+tracks/1/path = NodePath("LightComponent:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(9, 12)]
+"values": [Vector2(9, -4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1qkn"]
@@ -293,43 +292,40 @@ z_index = 1
 y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_kboq8")
-metadata/_edit_lock_ = true
 
-[node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component", "effect_component") instance=ExtResource("2_omncf")]
-health_component = NodePath("../Health_Component")
-effect_component = NodePath("../Effect_Component")
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "effect_component") instance=ExtResource("2_omncf")]
+health_component = NodePath("../HealthComponent")
+effect_component = NodePath("../EffectComponent")
 
-[node name="CollisionShapeHitbox" type="CollisionShape2D" parent="Hitbox_Component"]
-position = Vector2(0, 16)
+[node name="CollisionShapeHitbox" type="CollisionShape2D" parent="HitboxComponent"]
 scale = Vector2(2, 1)
 shape = SubResource("CircleShape2D_2fris")
 
-[node name="Health_Component" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_ayr0k")]
-health_bar = NodePath("../General_UI/Health_Bar")
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("health_bar") instance=ExtResource("3_ayr0k")]
+health_bar = NodePath("../GeneralUI/HealthBar")
+Invencibility_time = 2
 
-[node name="Effect_Component" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_5jpe7")]
-health = NodePath("../Health_Component")
+[node name="EffectComponent" parent="." node_paths=PackedStringArray("health") instance=ExtResource("4_5jpe7")]
+health = NodePath("../HealthComponent")
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(0, 16)
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 script = ExtResource("2_47vu8")
 randomStrength = 4.0
 shakeFade = 10.0
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(0, -16)
 texture = SubResource("CanvasTexture_imdis")
-offset = Vector2(0, 16)
+offset = Vector2(0, -16)
 hframes = 4
 vframes = 8
 frame = 8
 region_rect = Rect2(0, 0, 64, 64)
 
-[node name="Light_player" parent="." instance=ExtResource("4_bl5v7")]
-position = Vector2(0, 24)
-energy_off = 0.05
+[node name="LightComponent" parent="." instance=ExtResource("4_bl5v7")]
+position = Vector2(0, 8)
+energy_off = 0.1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -339,21 +335,18 @@ autoplay = "down"
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 show_behind_parent = true
-position = Vector2(0, -3)
+position = Vector2(0, -19)
 scale = Vector2(1.05632, 1.1301)
 occluder = SubResource("OccluderPolygon2D_hiksw")
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
 scale = Vector2(2, 1)
 shape = SubResource("CircleShape2D_g5uy8")
-metadata/_edit_lock_ = true
 
-[node name="Inventory_Ui" type="CanvasLayer" parent="."]
+[node name="InventoryUI" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="BG" type="ColorRect" parent="Inventory_Ui"]
+[node name="BG" type="ColorRect" parent="InventoryUI"]
 modulate = Color(1, 1, 1, 0.541176)
 anchors_preset = 15
 anchor_right = 1.0
@@ -362,7 +355,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="Inventory_Ui"]
+[node name="Label" type="Label" parent="InventoryUI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -378,7 +371,7 @@ text = "INVENTORY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Inventory_UI" parent="Inventory_Ui" instance=ExtResource("5_i84sf")]
+[node name="InventoryUI" parent="InventoryUI" instance=ExtResource("5_i84sf")]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -388,30 +381,30 @@ anchor_bottom = 0.5
 offset_right = 0.0
 offset_bottom = 0.0
 
-[node name="Craft_Interface" parent="Inventory_Ui" instance=ExtResource("8_hxalo")]
+[node name="CraftInterface" parent="InventoryUI" instance=ExtResource("8_hxalo")]
 visible = false
 offset_left = 576.0
 offset_top = 348.0
 offset_right = 576.0
 offset_bottom = 348.0
 
-[node name="General_UI" type="CanvasLayer" parent="."]
+[node name="GeneralUI" type="CanvasLayer" parent="."]
 
-[node name="Inventory_Hotbar" parent="General_UI" instance=ExtResource("7_amla0")]
+[node name="InventoryHotbar" parent="GeneralUI" instance=ExtResource("7_amla0")]
 offset_left = 576.0
 offset_top = 592.0
 offset_right = 576.0
 offset_bottom = 592.0
 metadata/_edit_lock_ = true
 
-[node name="Stamina_Bar" parent="General_UI" instance=ExtResource("10_4t5l2")]
+[node name="StaminaBar" parent="GeneralUI" instance=ExtResource("10_4t5l2")]
 offset_left = 152.0
 offset_top = 164.0
 offset_right = 152.0
 offset_bottom = 164.0
 metadata/_edit_lock_ = true
 
-[node name="Health_Bar" parent="General_UI" node_paths=PackedStringArray("health") instance=ExtResource("9_xsjac")]
+[node name="HealthBar" parent="GeneralUI" node_paths=PackedStringArray("health") instance=ExtResource("9_xsjac")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -419,22 +412,14 @@ anchor_right = 0.5
 offset_top = -127.0
 offset_bottom = -127.0
 grow_vertical = 0
-health = NodePath("../../Health_Component")
+health = NodePath("../../HealthComponent")
 metadata/_edit_lock_ = true
 
-[node name="Light_Bar" parent="General_UI" instance=ExtResource("11_nfpjv")]
+[node name="LightBar" parent="GeneralUI" instance=ExtResource("11_nfpjv")]
 offset_left = 432.0
 offset_top = 488.0
 offset_right = 432.0
 offset_bottom = 488.0
-metadata/_edit_lock_ = true
-
-[node name="Interact" parent="General_UI" instance=ExtResource("13_452lc")]
-visible = false
-offset_left = 576.0
-offset_top = 347.0
-offset_right = 576.0
-offset_bottom = 347.0
 metadata/_edit_lock_ = true
 
 [node name="Win" type="CanvasLayer" parent="."]
@@ -520,18 +505,18 @@ text = "YOU DIED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stamina_Timer" type="Timer" parent="."]
+[node name="StaminaTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
-[node name="Light_Timer" type="Timer" parent="."]
+[node name="LightTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
-[node name="Reset_Timer" type="Timer" parent="."]
+[node name="ResetTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
-[connection signal="timeout" from="Stamina_Timer" to="." method="_on_stamina_timer_timeout"]
-[connection signal="timeout" from="Light_Timer" to="." method="_on_light_timer_timeout"]
-[connection signal="timeout" from="Reset_Timer" to="." method="_on_reset_timer_timeout"]
+[connection signal="timeout" from="StaminaTimer" to="." method="_on_stamina_timer_timeout"]
+[connection signal="timeout" from="LightTimer" to="." method="_on_light_timer_timeout"]
+[connection signal="timeout" from="ResetTimer" to="." method="_on_reset_timer_timeout"]
